@@ -1,8 +1,8 @@
 package com.project.step_definitions;
 
 import com.project.pages.LoginPage;
-import com.project.utilites.utilities.ConfigurationReader;
-import com.project.utilites.utilities.Driver;
+import com.project.utilites.ConfigurationReader;
+import com.project.utilites.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
