@@ -42,8 +42,7 @@
             <version>3.141.59</version>
         </dependency>
         <!--
-        https://mvnrepository.com/artifact/io.github.bonigarcia/webdrive
-        rmanager -->
+        https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
