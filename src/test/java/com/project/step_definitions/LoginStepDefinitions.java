@@ -42,9 +42,9 @@ public class LoginStepDefinitions {
         loginPage.passwordInput.sendKeys(Keys.ENTER);
     }
 
-    @When("user enters invalid username")
-    public void userEntersInvalidUsername() {
-        loginPage.usernameInput.sendKeys("Employee1055");
+    @When("user enters invalid {string}")
+    public void userEntersInvalid(String string) {
+        loginPage.usernameInput.sendKeys(string);
     }
 
     @Then("user should see -Wrong username or password.-")
@@ -55,6 +55,11 @@ public class LoginStepDefinitions {
     @And("user enters invalid password")
     public void userEntersInvalidPassword() {
         loginPage.passwordInput.sendKeys("Employee1234");
+    }
+
+    @When("user enters invalid username")
+    public void userEntersInvalidUsername() {
+        loginPage.usernameInput.sendKeys("Employee1055");
     }
 
     @When("user leaves username empty")
@@ -74,4 +79,5 @@ public class LoginStepDefinitions {
     @And("user leaves password empty")
     public void userLeavesPasswordEmpty() {
     }
+
 }
