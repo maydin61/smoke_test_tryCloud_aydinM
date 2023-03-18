@@ -22,4 +22,13 @@ public class LoginPage {
 
     @FindBy(xpath ="//p[@class='warning wrongPasswordMsg']")
     public WebElement wrongMsg;
+
+    @FindBy(xpath ="//a[@class='toggle-password']" )
+    public WebElement eyeButton;
+
+    @FindBy(id ="lost-password")
+    public WebElement forgotPassword;
+
+    @FindBy(id ="reset-password-submit")
+    public WebElement resetPassword;
 }

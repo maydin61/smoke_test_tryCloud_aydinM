@@ -80,4 +80,44 @@ public class LoginStepDefinitions {
     public void userLeavesPasswordEmpty() {
     }
 
+    @When("user enters password")
+    public void userEntersPassword() {
+        loginPage.passwordInput.sendKeys("Employee1234");
+    }
+
+    @Then("user should see password in form of dots")
+    public void userShouldSeePasswordInFormOfDots() {
+       Assert.assertTrue(loginPage.passwordInput.getAttribute("type").equals("password"));
+    }
+
+    @And("user clicks on EYE button")
+    public void userClicksOnEYEButton() {
+        loginPage.eyeButton.click();
+    }
+
+    @Then("user should see password explicitly")
+    public void userShouldSeePasswordExplicitly() {
+        Assert.assertTrue(loginPage.passwordInput.getAttribute("type").equals("text"));
+    }
+
+    @When("user can see -Forgot password?-")
+    public void userCanSeeForgotPassword() {
+        Assert.assertTrue(loginPage.forgotPassword.isDisplayed());
+    }
+
+    @And("user clicks on -Forgot password?-")
+    public void userClicksOnForgotPassword() {
+        loginPage.forgotPassword.click();
+    }
+
+    @Then("user can see -Reset password-")
+    public void userCanSeeResetPassword() {
+        Assert.assertTrue(loginPage.resetPassword.isDisplayed());
+    }
+
+    @Then("user can see valid placeholders")
+    public void userCanSeeValidPlaceholders() {
+        Assert.assertTrue(loginPage.usernameInput.getAttribute("placeholder").equals("Username or email"));
+        Assert.assertTrue(loginPage.passwordInput.getAttribute("placeholder").equals("Password"));
+    }
 }
