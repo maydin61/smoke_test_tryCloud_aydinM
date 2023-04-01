@@ -87,7 +87,7 @@ public class LoginStepDefinitions {
 
     @Then("user should see password in form of dots")
     public void userShouldSeePasswordInFormOfDots() {
-       Assert.assertTrue(loginPage.passwordInput.getAttribute("type").equals("password"));
+        Assert.assertEquals("password", loginPage.passwordInput.getAttribute("type"));
     }
 
     @And("user clicks on EYE button")
@@ -97,7 +97,7 @@ public class LoginStepDefinitions {
 
     @Then("user should see password explicitly")
     public void userShouldSeePasswordExplicitly() {
-        Assert.assertTrue(loginPage.passwordInput.getAttribute("type").equals("text"));
+        Assert.assertEquals("text", loginPage.passwordInput.getAttribute("type"));
     }
 
     @When("user can see -Forgot password?-")
@@ -117,7 +117,7 @@ public class LoginStepDefinitions {
 
     @Then("user can see valid placeholders")
     public void userCanSeeValidPlaceholders() {
-        Assert.assertTrue(loginPage.usernameInput.getAttribute("placeholder").equals("Username or email"));
-        Assert.assertTrue(loginPage.passwordInput.getAttribute("placeholder").equals("Password"));
+        Assert.assertEquals("Username or email", loginPage.usernameInput.getAttribute("placeholder"));
+        Assert.assertEquals("Password", loginPage.passwordInput.getAttribute("placeholder"));
     }
 }

@@ -1,6 +1,6 @@
 package com.project.pages;
 
-import com.project.utilites.Driver;
+import com.project.utilites.*;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -31,4 +31,12 @@ public class LoginPage {
 
     @FindBy(id ="reset-password-submit")
     public WebElement resetPassword;
+
+    public void login(){
+        LoginPage loginPage = new LoginPage();
+        Driver.getDriver().get(ConfigurationReader.getProperty("web.url"));
+        loginPage.usernameInput.sendKeys("Employee95");
+        loginPage.passwordInput.sendKeys("Employee123");
+        loginPage.logInButton.click();
+    }
 }
