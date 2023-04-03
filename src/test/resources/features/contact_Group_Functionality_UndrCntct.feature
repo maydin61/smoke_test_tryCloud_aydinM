@@ -11,7 +11,7 @@ Feature: As a user, I should be able to create a new group and
    Delete this line and write your own AC.
 
   Background:
-    Given User is on the dashboard page
+             Given User is on the dashboard page
 
   Scenario: AC01 User can create a new group under Contacts Module
 
