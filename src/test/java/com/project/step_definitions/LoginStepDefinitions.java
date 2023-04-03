@@ -20,7 +20,7 @@ public class LoginStepDefinitions {
     }
     @When("user enters valid username")
     public void user_enters_valid_username() {
-        loginPage.usernameInput.sendKeys("Employee105");
+        loginPage.usernameInput.sendKeys("Employee25");
     }
     @When("user enters valid password")
     public void user_enters_valid_password() {
@@ -120,4 +120,17 @@ public class LoginStepDefinitions {
         Assert.assertEquals("Username or email", loginPage.usernameInput.getAttribute("placeholder"));
         Assert.assertEquals("Password", loginPage.passwordInput.getAttribute("placeholder"));
     }
+
+    @Given("user is on the login page")
+    public void userIsOnTheLoginPage() {
+
+
+    }
+
+    @Then("user should see {string} in the title")
+    public void userShouldSeeInTheTitle(String arg0) {
+
+
+    }
 }
+
