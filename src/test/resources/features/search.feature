@@ -1,6 +1,8 @@
 @wip
 Feature: As a user, I should be able to search file
   or contact from the Dashboard and see the photos under Photos Module
+  
+Background: Given user is on Dashboard page  
 
   Scenario Outline: User can search file typing its name through the magnifying glass
   icon inside any Module and see the details side page of the file when clicked on it.
@@ -23,7 +25,6 @@ Feature: As a user, I should be able to search file
       | deck       | talk     |
 
   Scenario: User can search contacts by clicking on the contacts icon and typing its name
-    Given user is on Dashboard page
     When user clicks contacts icon
     And types names
     Then user can see that specific contact
