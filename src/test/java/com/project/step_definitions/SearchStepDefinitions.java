@@ -1,6 +1,6 @@
 package com.project.step_definitions;
 
-import com.project.pages.DashboardPage;
+import com.project.pages.SearchBoxElements;
 import com.project.pages.FilesPage;
 import com.project.pages.LoginPage;
 import com.project.utilites.BrowserUtils;
@@ -15,7 +15,7 @@ public class SearchStepDefinitions {
 
     LoginPage loginPage = new LoginPage();
 
-    DashboardPage dashboardPage = new DashboardPage();
+    SearchBoxElements searchBoxElements = new SearchBoxElements();
 
     FilesPage filesPage = new FilesPage();
 
@@ -28,16 +28,16 @@ public class SearchStepDefinitions {
     @When("user clicks magnifying glass")
     public void user_clicks_magnifying_glass() {
         BrowserUtils.waitFor(5);
-        dashboardPage.magnifyingGlass.click();
+        searchBoxElements.magnifyingGlass.click();
     }
     @When("user enters {string} file name")
     public void user_enters_file_name(String fileName) {
-        dashboardPage.searchBox.sendKeys(fileName + Keys.ENTER);
+        searchBoxElements.searchBox.sendKeys(fileName + Keys.ENTER);
     }
     @When("user clicks the file")
     public void user_clicks_the_file() {
-        BrowserUtils.waitForVisibility(dashboardPage.file, 10);
-        dashboardPage.file.click();
+        BrowserUtils.waitForVisibility(searchBoxElements.file, 10);
+        searchBoxElements.file.click();
     }
     @Then("user should see the details side page of the file")
     public void user_should_see_the_details_side_page_of_the_file() {
