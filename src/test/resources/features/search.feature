@@ -21,3 +21,9 @@ Feature: As a user, I should be able to search file
       | circles    | talk     |
       | calendar   | talk     |
       | deck       | talk     |
+
+  Scenario: User can search contacts by clicking on the contacts icon and typing its name
+    Given user is on Dashboard page
+    When user clicks contacts icon
+    And types names
+    Then user can see that specific contact

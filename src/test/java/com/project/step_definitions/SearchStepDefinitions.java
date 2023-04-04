@@ -1,10 +1,11 @@
 package com.project.step_definitions;
 
-import com.project.pages.SearchBoxElements;
+import com.project.pages.RightHeaderElements;
 import com.project.pages.FilesPage;
 import com.project.pages.LoginPage;
 import com.project.utilites.BrowserUtils;
 import com.project.utilites.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -15,7 +16,7 @@ public class SearchStepDefinitions {
 
     LoginPage loginPage = new LoginPage();
 
-    SearchBoxElements searchBoxElements = new SearchBoxElements();
+    RightHeaderElements rightHeaderElements = new RightHeaderElements();
 
     FilesPage filesPage = new FilesPage();
 
@@ -28,19 +29,37 @@ public class SearchStepDefinitions {
     @When("user clicks magnifying glass")
     public void user_clicks_magnifying_glass() {
         BrowserUtils.waitFor(5);
-        searchBoxElements.magnifyingGlass.click();
+        rightHeaderElements.magnifyingGlass.click();
     }
     @When("user enters {string} file name")
     public void user_enters_file_name(String fileName) {
-        searchBoxElements.searchBox.sendKeys(fileName + Keys.ENTER);
+        rightHeaderElements.searchBox.sendKeys(fileName + Keys.ENTER);
     }
     @When("user clicks the file")
     public void user_clicks_the_file() {
-        BrowserUtils.waitForVisibility(searchBoxElements.file, 10);
-        searchBoxElements.file.click();
+        BrowserUtils.waitForVisibility(rightHeaderElements.file, 10);
+        rightHeaderElements.file.click();
     }
     @Then("user should see the details side page of the file")
     public void user_should_see_the_details_side_page_of_the_file() {
         Assert.assertTrue(filesPage.sideBar.isDisplayed());
+    }
+
+    @Given("user is on Dashboard page")
+    public void userIsOnDashboardPage() {
+        loginPage.login();
+    }
+
+    @When("user clicks contacts icon")
+    public void userClicksContactsIcon() {
+
+    }
+
+    @And("types names")
+    public void typesNames() {
+    }
+
+    @Then("user can see that specific contact")
+    public void userCanSeeThatSpecificContact() {
     }
 }
