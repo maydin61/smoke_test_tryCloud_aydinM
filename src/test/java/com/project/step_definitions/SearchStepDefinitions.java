@@ -22,7 +22,6 @@ public class SearchStepDefinitions {
 
     @Given("user is under the {string} module")
     public void user_is_under_the_module(String moduleName) {
-        loginPage.login();
         Driver.getDriver().navigate().to("https://qa.trycloud.net/index.php/apps/" + moduleName + "/");
 
     }
@@ -52,11 +51,12 @@ public class SearchStepDefinitions {
 
     @When("user clicks contacts icon")
     public void userClicksContactsIcon() {
-
+        rightHeaderElements.contactsIcon.click();
     }
 
     @And("types names")
     public void typesNames() {
+
     }
 
     @Then("user can see that specific contact")
