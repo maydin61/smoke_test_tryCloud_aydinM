@@ -26,7 +26,13 @@ Background: Given user is on Dashboard page
       | calendar   | talk     |
       | deck       | talk     |
 
-  Scenario: User can search contacts by clicking on the contacts icon and typing its name
+  Scenario Outline: User can search contacts by clicking on the contacts icon and typing its name
     When user clicks contacts icon
     And types "<names>"
     Then user can see that specific contact
+    Examples:
+      | names   |
+      | Nati    |
+      | Akos    |
+      | Huseyin |
+      | Dursun  |

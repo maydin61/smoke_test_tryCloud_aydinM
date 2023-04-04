@@ -54,12 +54,13 @@ public class SearchStepDefinitions {
         rightHeaderElements.contactsIcon.click();
     }
 
-    @And("types names")
-    public void typesNames() {
-
+    @And("types {string}")
+    public void typesNames(String names) {
+        rightHeaderElements.contactsInput.sendKeys(names + Keys.ENTER);
     }
 
     @Then("user can see that specific contact")
     public void userCanSeeThatSpecificContact() {
+
     }
 }
