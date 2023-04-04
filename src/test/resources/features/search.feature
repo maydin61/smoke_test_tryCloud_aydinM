@@ -11,7 +11,7 @@ Feature: As a user, I should be able to search file
     Then user should see the details side page of the file
     Examples:
       | moduleName | fileName |
-      | dashboard  | talk        |
+      | dashboard  | talk     |
       | files      | talk     |
       | photos     | talk     |
       | activity   | talk     |
