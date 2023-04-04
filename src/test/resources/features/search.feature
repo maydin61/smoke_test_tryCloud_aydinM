@@ -1,4 +1,4 @@
-@wip443
+@wip
 Feature: As a user, I should be able to search file
   or contact from the Dashboard and see the photos under Photos Module
 
@@ -11,9 +11,13 @@ Feature: As a user, I should be able to search file
     Then user should see the details side page of the file
     Examples:
       | moduleName | fileName |
-      | dashboard  | Readme   |
+      | dashboard  | talk        |
       | files      | talk     |
       | photos     | talk     |
       | activity   | talk     |
       | talk       | talk     |
       | mail       | talk     |
+      | contacts   | talk     |
+      | circles    | talk     |
+      | calendar   | talk     |
+      | deck       | talk     |
