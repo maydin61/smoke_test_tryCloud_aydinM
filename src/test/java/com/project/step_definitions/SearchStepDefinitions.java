@@ -44,11 +44,6 @@ public class SearchStepDefinitions {
         Assert.assertTrue(filesPage.sideBar.isDisplayed());
     }
 
-    @Given("user is on Dashboard page")
-    public void userIsOnDashboardPage() {
-        loginPage.login();
-    }
-
     @When("user clicks contacts icon")
     public void userClicksContactsIcon() {
         rightHeaderElements.contactsIcon.click();
