@@ -18,8 +18,26 @@ public class FilePage extends BasePage{
     public WebElement plusIcon;
 
     @FindBy(xpath = "//span[@class='displayname']")
-
     public WebElement uploadFileIcon;
+
+    @FindBy(css="input[type=file]")
+    public WebElement FileUpload;
+
+    @FindBy(xpath = "(//span[@class='nametext'])[2]")
+    public WebElement actualUploadedFile;
+
+
+
+    public void fileUpload(String fileName) {
+        //String desktopFilePath = "C://Users//Administrator//Desktop//"+fileName+".txt";
+
+        String projectPath = System.getProperty("user.dir");
+        String filePath = "src/test/resources/" + fileName + ".txt";
+        String projectFilePath = projectPath + "/" + filePath;
+        FileUpload.sendKeys(projectFilePath);
+
+    }
+
 
 
     }
