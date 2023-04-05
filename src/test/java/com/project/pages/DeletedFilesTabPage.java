@@ -22,4 +22,11 @@ public class DeletedFilesTabPage {
 
     @FindBy(xpath = "//span[@class='nametext extra-data']")
     public WebElement recentDeletedFile;
+
+    @FindBy(xpath = "//div[@id='app-content-trashbin']/table//a/span[.='Name']")
+    public WebElement sortByName;
+
+    @FindBy(xpath = "//span[@class='nametext extra-data']")
+    public WebElement oldestDeletedFile;
+
 }

@@ -3,6 +3,7 @@ package com.project.step_definitions;
 import com.project.pages.DeletedFilesTabPage;
 import com.project.pages.LoginPage;
 import com.project.utilites.BrowserUtils;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -30,4 +31,13 @@ public class DeletedFilesTab_StepDefinitions {
         Assert.assertEquals("Readme\n.md",deletedFilesTabPage.recentDeletedFile.getText());
     }
 
+    @And("user clicks on -Name- button")
+    public void userClicksOnNameButton() {
+        deletedFilesTabPage.sortByName.click();
+    }
+
+    @Then("user should see the oldest deleted file in the first line")
+    public void userShouldSeeTheOldestDeletedFileInTheFirstLine() {
+        Assert.assertEquals("Beti Kocyigit",deletedFilesTabPage.oldestDeletedFile.getText());
+    }
 }
