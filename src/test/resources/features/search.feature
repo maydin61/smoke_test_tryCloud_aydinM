@@ -4,8 +4,6 @@ Feature: As a user, I should be able to search file
   
 Background: Given user is on Dashboard page  
 
-Background: Given user is on Dashboard page
-
   Scenario Outline: User can search file typing its name through the magnifying glass
   icon inside any Module and see the details side page of the file when clicked on it.
     Given user is under the "<moduleName>" module
