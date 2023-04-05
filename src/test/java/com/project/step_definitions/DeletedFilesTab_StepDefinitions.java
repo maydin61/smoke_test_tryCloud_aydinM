@@ -14,7 +14,6 @@ public class DeletedFilesTab_StepDefinitions {
 
     @When("user clicks on -Files- button")
     public void user_clicks_on_files_button() {
-        loginPage.login();
         deletedFilesTabPage.filesButton.click();
     }
     @When("user clicks on -Deleted files- button")
