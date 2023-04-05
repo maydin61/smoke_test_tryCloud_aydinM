@@ -19,9 +19,9 @@ public class RightHeaderElements {
     @FindBy(xpath = "//div[2]//ul[2]//li/a[@class='unified-search__result']")
     public WebElement file;
 
-    @FindBy(className = "icon-contacts menutoggle")
+    @FindBy(xpath = "//div[@class='icon-contacts menutoggle']")
     public WebElement contactsIcon;
 
-    @FindBy(xpath = "//input[@class='unified-search__form-input']")
+    @FindBy(xpath = "//input[@id='contactsmenu-search']")
     public WebElement contactsInput;
 }
