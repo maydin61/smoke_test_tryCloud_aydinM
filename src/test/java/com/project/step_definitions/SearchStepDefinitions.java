@@ -44,22 +44,20 @@ public class SearchStepDefinitions {
         Assert.assertTrue(filesPage.sideBar.isDisplayed());
     }
 
-    @Given("user is on Dashboard page")
-    public void userIsOnDashboardPage() {
-        loginPage.login();
-    }
-
     @When("user clicks contacts icon")
     public void userClicksContactsIcon() {
+
+        BrowserUtils.waitForClickablility(rightHeaderElements.contactsIcon,3);
         rightHeaderElements.contactsIcon.click();
     }
 
-    @And("types names")
-    public void typesNames() {
-
+    @And("types {string}")
+    public void typesNames(String names) {
+        rightHeaderElements.contactsInput.sendKeys(names + Keys.ENTER);
     }
 
     @Then("user can see that specific contact")
     public void userCanSeeThatSpecificContact() {
+
     }
 }
