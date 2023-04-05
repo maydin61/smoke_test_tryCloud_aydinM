@@ -46,6 +46,8 @@ public class SearchStepDefinitions {
 
     @When("user clicks contacts icon")
     public void userClicksContactsIcon() {
+
+        BrowserUtils.waitForClickablility(rightHeaderElements.contactsIcon,3);
         rightHeaderElements.contactsIcon.click();
     }
 
