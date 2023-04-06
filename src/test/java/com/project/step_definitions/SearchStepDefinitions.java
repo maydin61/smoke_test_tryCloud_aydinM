@@ -62,37 +62,5 @@ public class SearchStepDefinitions {
     @Then("user can see that specific contact")
     public void userCanSeeThatSpecificContact() {
 
-
-    }
-
-    @When("user navigates to Files module")
-    public void userNavigatesToFilesModule() {
-        Driver.getDriver().navigate().to("https://qa.trycloud.net/index.php/apps/files/");
-    }
-
-    @And("user clicks plus button")
-    public void userClicksPlusButton() {
-        BrowserUtils.waitFor(2);
-        filesPage.plusButton.click();
-    }
-
-    @And("user clicks upload a file option")
-    public void userClickUploadAFileOption() {
-        filesPage.uploadAFile.click();
-    }
-
-    @And("user enters the {string} of a photo")
-    public void userEntersTheOfAPhoto(String arg0) {
-        filesPage.uploadAFile.sendKeys(arg0);
-    }
-
-    @Then("user navigates to Photos module")
-    public void userNavigatesToPhotosModule() {
-        Driver.getDriver().navigate().to("https://qa.trycloud.net/index.php/photos/");
-    }
-
-    @And("user should see the image file uploaded")
-    public void userShouldSeeTheImageFileUploaded() {
-        Assert.assertTrue(photosPage.lastUploadedPhoto.isDisplayed());
     }
 }

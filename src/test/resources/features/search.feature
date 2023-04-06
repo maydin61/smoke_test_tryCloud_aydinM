@@ -36,17 +36,3 @@ Background:
       | Akos    |
       | Huseyin |
       | Dursun  |
-  @wip
-  Scenario Outline: User can also see the images files under the Photos module when uploaded them
-    When user navigates to Files module
-    And user clicks plus button
-    And user clicks upload a file option
-    And user enters the "<path>" of a photo
-    Then user navigates to Photos module
-    And user should see the image file uploaded
-    Examples:
-      | path                              |
-      | C:\Users\Nati\Downloads\CATS!.jpg |
-      | C:\Users\Nati\Downloads\cats2.jpg |
-      | C:\Users\Nati\Downloads\cats3.jpg |
-      | C:\Users\Nati\Downloads\cats4.jpg |
