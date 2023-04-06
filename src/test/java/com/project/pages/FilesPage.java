@@ -13,4 +13,10 @@ public class FilesPage {
 
     @FindBy(className = "app-sidebar-tabs__content")
     public WebElement sideBar;
+
+    @FindBy(xpath = "//div[@class='actions creatable']/a")
+    public WebElement plusButton;
+
+    @FindBy(xpath = "//div[@class='newFileMenu popovermenu bubble menu open menu-left']/ul/li[1]")
+    public WebElement uploadAFile;
 }
