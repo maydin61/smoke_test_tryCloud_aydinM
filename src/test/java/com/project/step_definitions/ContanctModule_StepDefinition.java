@@ -3,16 +3,22 @@ package com.project.step_definitions;
 import com.project.pages.ContactsModule;
 import com.project.pages.LoginPage;
 import com.project.utilites.Driver;
+import io.cucumber.java.bs.I;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.bytebuddy.asm.Advice;
 import org.junit.Assert;
 import org.junit.rules.ExpectedException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import javax.swing.*;
 
 public class ContanctModule_StepDefinition {
 
@@ -85,18 +91,39 @@ public class ContanctModule_StepDefinition {
     }
 
     @And("user should able to see the drop down menu while clicking -Choose property type- span")
-    public void userShouldAbleToSeeTheDropDownMenuWhileClickingChoosePropertyTypeSpan() {
+    public void userShouldAbleToSeeTheDropDownMenuWhileClickingChoosePropertyTypeSpan() throws InterruptedException {
        contactsModule.Nc_AllContacts.click();
+       contactsModule.Nc_allContacts_3linesIcon.click();
        contactsModule.Nc_allContacts_firstUser.click();
        contactsModule.Nc_AddNewProperty.click();
-        //contactsModule.Nc_AddProperty_Birthday.click();
+       contactsModule.Nc_AddPropertyTypeInput.isDisplayed();
+       Thread.sleep(2000);
+       contactsModule.Nc_AddPropertyTypeInput.click();
+        Thread.sleep(2000);
+       // contactsModule.Nc_AddProperty_Birthday.click();
 
-     //WebElement n1=contactsModule.Nc_AddProperty_Birthday;
-      //  System.out.println("n1 = " + n1.getText().toString());
-        Select select=new Select(contactsModule.Nc_AddProperty_Birthday);
-        select.selectByVisibleText("Birthday");
+
+        //Select dropSelect = new Select(contactsModule.Nc_AddProperty_Birthday);
+       // dropSelect.selectByVisibleText("Birthday");
     }
+
+    @And("user should able to add a new property as {string} from dro[down menu")
+    public void userShouldAbleToAddANewPropertyAsFromDroDownMenu(String arg0) throws InterruptedException {
+        WebDriverWait wait =new WebDriverWait(Driver.getDriver(),10 );
+        WebElement element = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/main/div/div[2]/section/div[6]/h3/div[2]")));
+        contactsModule.Nc_AddNewProperty.sendKeys(arg0,Keys.ENTER);
+        Thread.sleep(3000);
+       // contactsModule.Nc_AddNewProperty.sendKeys(Keys.ENTER);
+       // Thread.sleep(3000);
+
+
+        }
 }
 
+ /*   WebDriverWait wait = new WebDriverWait(gmail, 10);
+    WebElement element = wait.until(
+            ExpectedConditions.visibilityOfElementLocated(By.id("Passwd")));
+gmail.findElement(By.id("Passwd")).sendKeys("xyz");*/
 //Select drpCountry = new Select(driver.findElement(By.name("country")));
 //drpCountry.selectByVisibleText("ANTARCTICA");
