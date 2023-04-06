@@ -50,8 +50,14 @@ public class ContactsModule {
     @FindBy(xpath = "//span[@title='All contacts']")
     public WebElement Nc_AllContacts;
 
+    @FindBy(xpath = "//a[@aria-expanded='true']")
+    public WebElement Nc_allContacts_3linesIcon;
+
     @FindBy(css = "div.app-content-list-item.active")
     public WebElement Nc_allContacts_firstUser;
+
+    @FindBy(css = "span.multiselect__placeholder")
+    public WebElement Nc_AddPropertyTypeInput2;
 
 
 
