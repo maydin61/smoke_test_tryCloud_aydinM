@@ -77,10 +77,10 @@ public class ContanctModule_StepDefinition {
 
     @Then("user should able  to see -Add new property- text on Contact Module page")
     public void userShouldAbleToSeeAddNewPropertyTextOnContactModulePage() {
-        String actualText = contactsModule.Nc_AddNewProperty.getText();
-        // System.out.println("actualText = " + actualText);
-        String expectedText ="Add new property";
-        Assert.assertEquals(expectedText, actualText);
+        String actualText =contactsModule.Nc_AddNewPropertyText.getText();
+        System.out.println("actualText = " + actualText);
+       String expectedText ="Add new property";
+       Assert.assertEquals(expectedText, actualText);
     }
 
     @And("user should able to see -Choose property type- input span")
@@ -95,7 +95,7 @@ public class ContanctModule_StepDefinition {
        contactsModule.Nc_AllContacts.click();
        contactsModule.Nc_allContacts_3linesIcon.click();
        contactsModule.Nc_allContacts_firstUser.click();
-       contactsModule.Nc_AddNewProperty.click();
+
        contactsModule.Nc_AddPropertyTypeInput.isDisplayed();
        Thread.sleep(2000);
        contactsModule.Nc_AddPropertyTypeInput.click();
@@ -112,13 +112,23 @@ public class ContanctModule_StepDefinition {
         WebDriverWait wait =new WebDriverWait(Driver.getDriver(),10 );
         WebElement element = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/main/div/div[2]/section/div[6]/h3/div[2]")));
-        contactsModule.Nc_AddNewProperty.sendKeys(arg0,Keys.ENTER);
+        contactsModule.Nc_AddPropertyTypeInput.sendKeys(arg0,Keys.ENTER);
         Thread.sleep(3000);
        // contactsModule.Nc_AddNewProperty.sendKeys(Keys.ENTER);
        // Thread.sleep(3000);
 
 
         }
+
+    @When("the user clicks on the contacts page, the formed -New Group- {int} dots icon should able to open dropdown menu")
+    public void theUserClicksOnTheContactsPageTheFormedNewGroupDotsIconShouldAbleToOpenDropdownMenu(int arg0) throws InterruptedException {
+        contactsModule.Nc_group3DotsButton.click();
+        contactsModule.Nc_plusSingAddContactsInGroup.click();
+        contactsModule.Nc_SearchContacts2Selection.click();
+        Thread.sleep(2000);
+        contactsModule.Nc_SearchContacts_AddToGroupButton.click();
+
+    }
 }
 
  /*   WebDriverWait wait = new WebDriverWait(gmail, 10);
