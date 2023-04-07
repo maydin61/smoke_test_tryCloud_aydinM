@@ -38,10 +38,13 @@ public class ContactsModule {
     @FindBy(xpath = "//div[@class='entity-picker__navigation']//button[2]")  // add second person in list
     public WebElement Nc_SearchContacts_AddToGroupButton;
 
-    @FindBy(xpath = "/html/body/div[3]/main/div/div[2]/section/div[6]/h3/div[2]")
+    @FindBy(xpath = "(//div[@class='property__value property__title--right'])[6]")
+    public WebElement Nc_AddNewPropertyText;
+
+    @FindBy(xpath = "//div[@class='multiselect property__value multiselect--above multiselect--single']")
     public WebElement Nc_AddNewProperty;
 
-    @FindBy(xpath = "(//span[@class='multiselect__placeholder']/../..//div)[9]")
+    @FindBy(xpath = "(//input)[37]")
     public WebElement Nc_AddPropertyTypeInput;
 
     @FindBy(xpath = "(//span[@class='multiselect__placeholder']/../..//div)[15]")
@@ -59,6 +62,11 @@ public class ContactsModule {
     @FindBy(css = "span.multiselect__placeholder")
     public WebElement Nc_AddPropertyTypeInput2;
 
+    @FindBy(xpath = "(//button[@aria-haspopup='true'])[4]")
+    public WebElement Nc_group3DotsButton;
+
+    @FindBy(xpath = "//span[@class='action-button__text']")
+    public WebElement Nc_plusSingAddContactsInGroup;
 
 
 
