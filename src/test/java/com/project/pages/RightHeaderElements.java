@@ -24,4 +24,11 @@ public class RightHeaderElements {
 
     @FindBy(xpath = "//input[@id='contactsmenu-search']")
     public WebElement contactsInput;
+
+    @FindBy(id = "contactsmenu-contacts")
+    public WebElement specificContact;
+
+    @FindBy(xpath = "//a[@id='nextcloud']")
+    public WebElement tryCloudIcon;
+
 }

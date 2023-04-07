@@ -61,6 +61,16 @@ public class SearchStepDefinitions {
 
     @Then("user can see that specific contact")
     public void userCanSeeThatSpecificContact() {
+        Assert.assertTrue(rightHeaderElements.specificContact.isDisplayed());
+    }
 
+    @And("user clicks the Trycloud icon")
+    public void userClicksTheTrycloudIcon() {
+        rightHeaderElements.tryCloudIcon.click();
+    }
+
+    @Then("user should be on the Dashboard page")
+    public void userShouldBeOnTheDashboardPage() {
+        Assert.assertEquals("https://qa.trycloud.net/index.php/apps/dashboard/", Driver.getDriver().getCurrentUrl());
     }
 }

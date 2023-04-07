@@ -1,4 +1,3 @@
-
 Feature: As a user, I should be able to search file
   or contact from the Dashboard and see the photos under Photos Module
 
@@ -36,3 +35,21 @@ Background:
       | Akos    |
       | Huseyin |
       | Dursun  |
+  @wip
+  Scenario Outline: User can navigate to the Dashboard page whenever clicking the TryCloud icon
+  at the top left corner on the page
+    Given user is under the "<moduleName>" module
+    And user clicks the Trycloud icon
+    Then user should be on the Dashboard page
+    Examples:
+      | moduleName |
+      | dashboard  |
+      | files      |
+      | photos     |
+      | activity   |
+      | talk       |
+      | mail       |
+      | contacts   |
+      | circles    |
+      | calendar   |
+      | deck       |
