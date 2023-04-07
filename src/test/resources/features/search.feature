@@ -13,7 +13,7 @@ Background:
     Then user should see the details side page of the file
     Examples:
       | moduleName | fileName |
-      | dashboard  | talk     |
+      | dashboard  | 123      |
       | files      | wer      |
       | photos     | jj       |
       | activity   | kk       |
@@ -22,7 +22,7 @@ Background:
       | contacts   | fghjk    |
       | circles    | 11       |
       | calendar   | ii       |
-      | deck       | aa        |
+      | deck       | aa       |
 
 
   Scenario Outline: User can search contacts by clicking on the contacts icon and typing its name
@@ -35,7 +35,7 @@ Background:
       | Akos    |
       | Huseyin |
       | Dursun  |
-  @wip
+
   Scenario Outline: User can navigate to the Dashboard page whenever clicking the TryCloud icon
   at the top left corner on the page
     Given user is under the "<moduleName>" module
@@ -53,3 +53,20 @@ Background:
       | circles    |
       | calendar   |
       | deck       |
+  @wip
+    Scenario Outline: User should be able to easily modify their search query as needed,
+    and the system should update the results accordingly
+      When user clicks magnifying glass
+      And enters a "<search query1>" search query
+      Then user clicks delete button
+      And enters a new "<search query2>" search query
+      Then user should see the last search query
+      Examples:
+        | search query1 | search query2 |
+        | Akos          | Nati          |
+        | talk          | readme        |
+        | Huseyin       |               |
+        | 123           | wer           |
+        | ii            | Dursun        |
+        | 11            |               |
+

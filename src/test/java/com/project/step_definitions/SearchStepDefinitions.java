@@ -73,4 +73,26 @@ public class SearchStepDefinitions {
     public void userShouldBeOnTheDashboardPage() {
         Assert.assertEquals("https://qa.trycloud.net/index.php/apps/dashboard/", Driver.getDriver().getCurrentUrl());
     }
+
+    @And("enters a {string} search query")
+    public void entersASearchQuery(String arg0) {
+        rightHeaderElements.searchBox.sendKeys(arg0);
+    }
+
+    @Then("user clicks delete button")
+    public void userclicksdeletebutton() {
+        rightHeaderElements.deleteButton.click();
+    }
+
+    @And("enters a new {string} search query")
+    public void entersANewSearchQuery(String arg0) {
+        rightHeaderElements.searchBox.sendKeys(arg0);
+        BrowserUtils.waitFor(1);
+    }
+
+    @Then("user should see the last search query")
+    public void userShouldSeeTheLastSearchQuery() {
+        System.out.println(rightHeaderElements.file.getAttribute("title"));
+        Assert.assertTrue(rightHeaderElements.file.getAttribute("title").equals(rightHeaderElements.searchBox.getText()));
+    }
 }

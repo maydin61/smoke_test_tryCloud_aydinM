@@ -13,10 +13,10 @@ public class RightHeaderElements {
     @FindBy(xpath = "//a[@class='header-menu__trigger']")
     public WebElement magnifyingGlass;
 
-    @FindBy(xpath = "//input[@class='unified-search__form-input']")
+    @FindBy(xpath = "//form[@class='unified-search__form']/input[1]")
     public WebElement searchBox;
 
-    @FindBy(xpath = "//ul[@class='unified-search__results unified-search__results-files']/li/a")
+    @FindBy(xpath = "//div[@class='header-menu__content']/ul/li/a")
     public WebElement file;
 
     @FindBy(xpath = "//div[@class='icon-contacts menutoggle']")
@@ -30,5 +30,9 @@ public class RightHeaderElements {
 
     @FindBy(xpath = "//a[@id='nextcloud']")
     public WebElement tryCloudIcon;
+
+    @FindBy(xpath = "//div[@class='unified-search__input-wrapper']//input[@type='reset']")
+    public WebElement deleteButton;
+
 
 }
