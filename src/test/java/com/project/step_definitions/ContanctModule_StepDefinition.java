@@ -1,24 +1,18 @@
 package com.project.step_definitions;
 
 import com.project.pages.ContactsModule;
-import com.project.pages.LoginPage;
 import com.project.utilites.Driver;
-import io.cucumber.java.bs.I;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import net.bytebuddy.asm.Advice;
 import org.junit.Assert;
-import org.junit.rules.ExpectedException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import javax.swing.*;
 
 public class ContanctModule_StepDefinition {
 
@@ -36,11 +30,6 @@ public class ContanctModule_StepDefinition {
     @Then("user should able to click to -New group- text or -plus sing- to creat a New group")
     public void userShouldAbleToClickToNewGroupTextOrPlusSingToCreatANewGroup() throws InterruptedException {
         contactsModule.Nc_NewGroup.click();
-       /* Thread.sleep(2000);
-        contactsModule.Nc_CreatANewGroupInput.isDisplayed();
-        contactsModule.Nc_plusSingNewGroup.click();
-        Thread.sleep(2000);
-        contactsModule.Nc_CreatANewGroupInput.isDisplayed();*/
     }
 
     @And("Create a New group text input box should becomes visible")
@@ -57,21 +46,18 @@ public class ContanctModule_StepDefinition {
         contactsModule.Nc_CreatANewGroupArrowIcon.click();
         String actualTextNewGroup=contactsModule.Nc_NewCreatedGroup.getText();
         System.out.println("actualTextNewGroup = " + actualTextNewGroup);
-        Assert.assertEquals(actualTextNewGroup,arg0);
+        Assert.assertEquals(actualTextNewGroup,"Group EU10");
 
     }
     @Then("user should able to add new Contacts from -Add contact- while clicking -...- icon")
     public void user_should_able_to_add_new_contacts_from_add_contact_while_clicking_icon() {
-    contactsModule.Nc_Group22_3dots.click();
+        contactsModule.Nc_Group_EU10_3dots_2ndInGroup_List.click();
 
-    WebElement n=contactsModule.Nc_Group22_3dots;
-    Select select=new Select(n);
-    select.selectByVisibleText("Add contacts");
-    contactsModule.Nc_SearchContacts2Selection.click();
-    contactsModule.Nc_SearchContacts_AddToGroupButton.click();
-
-
-
+        WebElement n=contactsModule.Nc_Group_EU10_3dots_2ndInGroup_List;
+        Select select=new Select(n);
+        select.selectByVisibleText("Add contacts");
+        contactsModule.Nc_SearchContacts2Selection.click();
+        contactsModule.Nc_SearchContacts_AddToGroupButton.click();
 
     }
 
@@ -79,33 +65,26 @@ public class ContanctModule_StepDefinition {
     public void userShouldAbleToSeeAddNewPropertyTextOnContactModulePage() {
         String actualText =contactsModule.Nc_AddNewPropertyText.getText();
         System.out.println("actualText = " + actualText);
-       String expectedText ="Add new property";
-       Assert.assertEquals(expectedText, actualText);
+        String expectedText ="Add new property";
+        Assert.assertEquals(expectedText, actualText);
     }
 
     @And("user should able to see -Choose property type- input span")
     public void userShouldAbleToSeeChoosePropertyTypeInputSpan() {
-       contactsModule.Nc_AddPropertyTypeInput.isEnabled();
-
-
+        contactsModule.Nc_AddPropertyTypeInput.isEnabled();
     }
 
     @And("user should able to see the drop down menu while clicking -Choose property type- span")
     public void userShouldAbleToSeeTheDropDownMenuWhileClickingChoosePropertyTypeSpan() throws InterruptedException {
-       contactsModule.Nc_AllContacts.click();
-       contactsModule.Nc_allContacts_3linesIcon.click();
-       contactsModule.Nc_allContacts_firstUser.click();
+        contactsModule.Nc_AllContacts.click();
+        contactsModule.Nc_allContacts_3linesIcon.click();
+        contactsModule.Nc_allContacts_firstUser.click();
 
-       contactsModule.Nc_AddPropertyTypeInput.isDisplayed();
-       Thread.sleep(2000);
-       contactsModule.Nc_AddPropertyTypeInput.click();
+        contactsModule.Nc_AddPropertyTypeInput.isDisplayed();
         Thread.sleep(2000);
-       // contactsModule.Nc_AddProperty_Birthday.click();
-
-
-        //Select dropSelect = new Select(contactsModule.Nc_AddProperty_Birthday);
-       // dropSelect.selectByVisibleText("Birthday");
-    }
+        contactsModule.Nc_AddPropertyTypeInput.click();
+        Thread.sleep(2000);
+       }
 
     @And("user should able to add a new property as {string} from dro[down menu")
     public void userShouldAbleToAddANewPropertyAsFromDroDownMenu(String arg0) throws InterruptedException {
@@ -114,26 +93,77 @@ public class ContanctModule_StepDefinition {
                 ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/main/div/div[2]/section/div[6]/h3/div[2]")));
         contactsModule.Nc_AddPropertyTypeInput.sendKeys(arg0,Keys.ENTER);
         Thread.sleep(3000);
-       // contactsModule.Nc_AddNewProperty.sendKeys(Keys.ENTER);
-       // Thread.sleep(3000);
 
+    }
 
-        }
+    @Then("The user should able to click - + Add contacts-")
+    public void theUserShouldAbleToClickAddContacts() {
+        contactsModule.Nc_AllContacts.isEnabled();
 
-    @When("the user clicks on the contacts page, the formed -New Group- {int} dots icon should able to open dropdown menu")
-    public void theUserClicksOnTheContactsPageTheFormedNewGroupDotsIconShouldAbleToOpenDropdownMenu(int arg0) throws InterruptedException {
-        contactsModule.Nc_group3DotsButton.click();
-        contactsModule.Nc_plusSingAddContactsInGroup.click();
+    }
+
+    @And("The user should able to see -Search Contacts- and -all contacts- listed")
+    public void theUserShouldAbleToSeeSearchContactsAndAllContactsListed() {
+        contactsModule.Nc_AllContacts.isDisplayed();
+    }
+
+    @And("the user should be able to click to -Add to group- button any contacts to add its own info menu")
+    public void theUserShouldBeAbleToClickToAddToGroupButtonAnyContactsToAddItsOwnInfoMenu() {
+
+        contactsModule.Nc_group3DotsButton.isEnabled();
+        contactsModule.Nc_plusSingAddContacts_group.isDisplayed();
+    }
+
+    @When("the user can add a new contact to his or her group selected")
+    public void theUserCanAddANewContactToHisOrHerTheGroupSelected() throws InterruptedException {
+
+        contactsModule.Nc_Group_EU10_3dots_2ndInGroup_List.click();
+        Thread.sleep(1500);
+        contactsModule.Nc_plusSingAddContacts_group.click();
+        Thread.sleep(1500);
         contactsModule.Nc_SearchContacts2Selection.click();
-        Thread.sleep(2000);
+        Thread.sleep(1500);
+        contactsModule.Nc_SearchContacts_AddToGroupButton.click();
+    }
+
+    // # 3 codes
+
+    @When("the user clicks to plus button")
+    public void theUserClicksToPlusButton() {
+        contactsModule.Nc_plusSingNewGroup.click();
+
+    }
+
+    @Then("the user can see {string} text in the box")
+    public void theUserCanSeeTextInTheBox(String arg0) {
+        contactsModule.Nc_creatANewGroupText.isDisplayed();
+       // String expectedText=arg0;
+
+    }
+
+    @And("the user can enter new group name {string} in to the box")
+    public void theUserCanEnterNewGroupNameInToTheBox(String arg0) {
+        contactsModule.Nc_CreatANewGroupInput.sendKeys(arg0);
+        contactsModule.Nc_CreatANewGroupArrowIcon.click();
+        contactsModule.Nc_Group_EU10_3dots_2ndInGroup_List.click();
+
+        contactsModule.Nc_plusSingAddContacts_group.click();
+        contactsModule.Nc_SearchContacts2Selection.click();
+        contactsModule.Nc_SearchContacts_AddToGroupButton.click();
+    }
+
+    @And("the user can click all contacts button")
+    public void theUserCanClickAllContactsButton() {
+        contactsModule.Nc_AllContacts.isEnabled();
+    }
+
+    @Then("the user can click any contact and add it to {string} group")
+    public void theUserCanClickAnyContactAndAddItToGroup(String arg0) {
+        contactsModule.Nc_Group_EU10_3dots_2ndInGroup_List.click();
+        contactsModule.NewContact_plusNewContact.click();
+        contactsModule.Nc_SearchContacts2Selection.click();
         contactsModule.Nc_SearchContacts_AddToGroupButton.click();
 
     }
 }
 
- /*   WebDriverWait wait = new WebDriverWait(gmail, 10);
-    WebElement element = wait.until(
-            ExpectedConditions.visibilityOfElementLocated(By.id("Passwd")));
-gmail.findElement(By.id("Passwd")).sendKeys("xyz");*/
-//Select drpCountry = new Select(driver.findElement(By.name("country")));
-//drpCountry.selectByVisibleText("ANTARCTICA");

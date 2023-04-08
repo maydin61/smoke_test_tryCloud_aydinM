@@ -20,6 +20,9 @@ public class ContactsModule {
     @FindBy(css = "button.icon.action-item__menutoggle.icon-add")
     public WebElement Nc_plusSingNewGroup;
 
+    @FindBy(xpath = "(//input[@class='action-input__input focusable']/../../../..//span)[3]")
+    public WebElement Nc_creatANewGroupText;
+
     @FindBy(css = "input.action-input__input.focusable")
     public WebElement Nc_CreatANewGroupInput;
 
@@ -30,7 +33,9 @@ public class ContactsModule {
     public WebElement Nc_NewCreatedGroup;
 
     @FindBy(xpath = "(//button[@test-attr='1'])[4]")
-    public WebElement Nc_Group22_3dots;
+    public WebElement Nc_Group_EU10_3dots_2ndInGroup_List;
+
+   // (//button[@aria-haspopup='true'])[4]
 
     @FindBy(xpath = "(//a[@href='#'])[9]")     // add second person in list
     public WebElement Nc_SearchContacts2Selection;
@@ -66,7 +71,68 @@ public class ContactsModule {
     public WebElement Nc_group3DotsButton;
 
     @FindBy(xpath = "//span[@class='action-button__text']")
-    public WebElement Nc_plusSingAddContactsInGroup;
+    public WebElement Nc_plusSingAddContacts_group;
+
+    // New Contact locators
+
+    @FindBy(xpath = "//button")
+    public WebElement NewContact_plusNewContact;
+
+    @FindBy(xpath = "(//input)[20]")
+    public WebElement NewContact_text;
+
+    @FindBy(xpath = "(//input)[21]")
+    public WebElement NewContact_Company;
+
+    @FindBy(xpath = "(//input)[22]")
+    public WebElement NewContact_title;
+
+    @FindBy(xpath = "(//input)[23]")
+    public WebElement NewContact_Home_Dropdown_Phone;
+
+    @FindBy(xpath = "(//input)[24]")
+    public WebElement NewContact_Phone_Input;
+
+    @FindBy(xpath = "(//input)[25]")
+    public WebElement NewContact_Home_DropDown_Email;
+
+    @FindBy(xpath = "(//input)[26]")
+    public WebElement NewContact_Email_Input;
+
+    @FindBy(xpath = "(//input)[27]")
+    public WebElement NewContact_Home_DropDown_Address;
+
+    @FindBy(xpath = "(//input)[28]")
+    public WebElement NewContact_PostOfficeBox;
+
+    @FindBy(xpath = "(//input)[29]")
+    public WebElement NewContact_Address_Address;
+
+    @FindBy(xpath = "(//input)[30]")
+    public WebElement NewContact_ExtendedAddress;
+
+    @FindBy(xpath = "(//input)[31]")
+    public WebElement NewContact_PostalCode;
+
+    @FindBy(xpath = "(//input)[32]")
+    public WebElement NewContact_City;
+
+    @FindBy(xpath = "(//input)[33]")
+    public WebElement NewContact_StataOrProvince;
+
+    @FindBy(xpath = "(//input)[34]")
+    public WebElement NewContact_Country;
+
+    @FindBy (xpath = "//button[@class='action-item action-item--single property__actions property__actions--floating icon-delete undefined undefined has-tooltip']")
+    public WebElement NewContact_Delete_Address;
+
+    @FindBy (xpath = "(//button[@class='action-item action-item--single property__actions icon-delete undefined undefined has-tooltip'])[1]")
+    public WebElement NewContact_Delete_Phone;
+
+    @FindBy (xpath = "(//button[@class='action-item action-item--single property__actions icon-delete undefined undefined has-tooltip'])[2]")
+    public WebElement NewContact_Email_Phone;
+
+
 
 
 
