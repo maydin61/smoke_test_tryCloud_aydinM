@@ -18,7 +18,7 @@ public class DeletedFilesTab_StepDefinitions {
     @When("user clicks on -Deleted files- button")
     public void user_clicks_on_deleted_files_button() {
         deletedFilesTabPage.deletedFiles.click();
-        DeletedFilesTabPage.expected=DeletedFilesTabPage.closestTime();
+        DeletedFilesTabPage.expectedTime=DeletedFilesTabPage.closestTime();
     }
 
     @When("user clicks on -Deleted- button")
@@ -28,16 +28,17 @@ public class DeletedFilesTab_StepDefinitions {
     }
     @Then("user should see the most recent deleted file in the first line")
     public void user_should_see_the_most_recent_deleted_file_in_the_first_line() {
-        Assert.assertEquals(DeletedFilesTabPage.expected,deletedFilesTabPage.recentDeletedFileTime.getAttribute("data-original-title"));
+        Assert.assertEquals(DeletedFilesTabPage.expectedTime,deletedFilesTabPage.recentDeletedFileTime.getAttribute("data-original-title"));
     }
 
-    @And("user clicks on -Name- button")
-    public void userClicksOnNameButton() {
-        deletedFilesTabPage.sortByName.click();
+    @And("user clicks on -Deleted- button again")
+    public void userClicksOnDeletedButtonAgain() {
+        deletedFilesTabPage.deletedButton.click();
+        DeletedFilesTabPage.expectedLatestTime=DeletedFilesTabPage.latestTime();
     }
 
     @Then("user should see the oldest deleted file in the first line")
     public void userShouldSeeTheOldestDeletedFileInTheFirstLine() {
-        Assert.assertEquals("Beti Kocyigit",deletedFilesTabPage.oldestDeletedFile.getText());
+        Assert.assertEquals(DeletedFilesTabPage.expectedLatestTime,deletedFilesTabPage.oldestDeletedFile.getAttribute("data-original-title"));
     }
 }
