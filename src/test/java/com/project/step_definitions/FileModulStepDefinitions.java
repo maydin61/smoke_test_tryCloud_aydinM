@@ -1,16 +1,10 @@
 package com.project.step_definitions;
 
-import com.project.pages.DeletedFilesTabPage;
-import com.project.pages.FilePage;
+import com.project.pages.FilesPage;
 import com.project.utilites.BrowserUtils;
-import com.project.utilites.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -18,7 +12,7 @@ import java.util.List;
 
 public class FileModulStepDefinitions {
 
-    FilePage filePage = new FilePage();
+    FilesPage filePage = new FilesPage();
 
 
     @When("user clicks the {string} module")
@@ -44,42 +38,36 @@ public class FileModulStepDefinitions {
     }
 
     @When("user selects any file")
-    public void user_selects_any_file() throws AWTException {
+    public void user_selects_any_file() {
 
         filePage.fileUpload("load");
 
-//        Robot robot = new Robot();
-//        robot.keyPress(KeyEvent.VK_L);
-//        robot.keyPress(KeyEvent.VK_O);
-//        robot.keyPress(KeyEvent.VK_G);
-//
-//        robot.keyPress(KeyEvent.VK_ENTER);
     }
 
     @Then("user see uploaded file")
-    public void user_see_uploaded_file() {
+    public void user_see_uploaded_file() throws AWTException {
         BrowserUtils.waitFor(2);
 
         List<String> actualFolderList = BrowserUtils.getElementsText(filePage.folderlist);
         System.out.println(actualFolderList);
 
-        if(actualFolderList.contains("load\n" +
-                ".txt")){
+        if (actualFolderList.contains("load\n" +
+                ".txt")) {
 
             Assert.assertTrue(true);
-        }else{
+        } else {
             Assert.assertTrue(false);
         }
 
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyPress(KeyEvent.VK_TAB);
+
+        robot.keyPress(KeyEvent.VK_ENTER);
+
 
     }
-
-
-      @Then("the user delete uploaded file")
-    public void the_user_delete_uploaded_file() {
-
-
-            }
 
 
     @When("user clicks New folder file")
@@ -88,6 +76,7 @@ public class FileModulStepDefinitions {
         filePage.newFolderSelect.click();
 
     }
+
     @Then("click arrow icon")
     public void click_arrow_icon() {
         filePage.arrowIconClick.click();
@@ -102,13 +91,12 @@ public class FileModulStepDefinitions {
 
         List<String> actualFolderList = BrowserUtils.getElementsText(filePage.folderlist);
 
-        if(actualFolderList.contains("New folder")){
+        if (actualFolderList.contains("New folder")) {
 
-                Assert.assertTrue(true);
-            }else{
-                Assert.assertTrue(false);
-            }
-
+            Assert.assertTrue(true);
+        } else {
+            Assert.assertTrue(false);
+        }
 
 
     }
@@ -117,11 +105,11 @@ public class FileModulStepDefinitions {
     public void user_clicks_new_text_document() {
 
 
-       filePage.newTextDocument1.click();
-
+        filePage.newTextDocument1.click();
 
 
     }
+
     @Then("user move or copy the document into the any folder")
     public void user_move_or_copy_the_document_into_the_any_folder() {
         BrowserUtils.waitFor(3);
@@ -133,10 +121,11 @@ public class FileModulStepDefinitions {
         filePage.moveToTalkButton.click();
 
     }
+
     @Then("user see the item in the selected folder")
     public void user_see_the_item_in_the_selected_folder() {
 
-        Assert.assertEquals("New text document",filePage.newTextDocument2.getText());
+        Assert.assertEquals("New text document", filePage.newTextDocument2.getText());
 
     }
 
@@ -151,7 +140,7 @@ public class FileModulStepDefinitions {
     @Then("user sees no file into the folder")
     public void user_sees_no_file_into_the_folder() {
         BrowserUtils.waitFor(3);
-        Assert.assertEquals("No files in here",filePage.NoFilesText.getText());
+        Assert.assertEquals("No files in here", filePage.NoFilesText.getText());
     }
 
 
@@ -170,8 +159,8 @@ public class FileModulStepDefinitions {
     @Then("user clicks the add to favorites icon")
     public void user_clicks_the_add_to_favorites_icon() {
         BrowserUtils.waitFor(2);
-       filePage.threeDotDocument.click();
-       filePage.addToFavorites.click();
+        filePage.threeDotDocument.click();
+        filePage.addToFavorites.click();
 
     }
 
@@ -181,6 +170,7 @@ public class FileModulStepDefinitions {
         filePage.favoritesMenu.click();
 
     }
+
     @Then("user sees folder in the favorites section")
     public void user_sees_folder_in_the_favorites_section() {
 
@@ -191,27 +181,33 @@ public class FileModulStepDefinitions {
 
     @Then("the user delete {string} uploaded file")
     public void theUserDeleteUploadedFile(String file) {
-        BrowserUtils.waitFor(3);
 
-        List<String> actualFolderList = BrowserUtils.getElementsText(filePage.folderlist);
-        int count = 1;
+        int fileIndex = filePage.getFileIndex(file);
 
-        for (int i = 0; i < actualFolderList.size(); i++) {
-
-            if(actualFolderList.equals(file)) {
-
-                count++;
-                System.out.println("count = " + count);
-                break;
-            }
-
-        }
-
-
-        filePage.threeDotMethod(count).click();
+        filePage.threeDotMethod(fileIndex).click();
 
 //            filePage.threeDotDocument.click();
         filePage.deleteFileButton.click();
+    }
+
+    @Then("user cannot sees deleted items")
+    public void user_cannot_sees_deleted_items() {
+        BrowserUtils.waitFor(3);
+
+        List<String> actualFolderList = BrowserUtils.getElementsText(filePage.folderlist);
+
+
+        for (int i = 0; i < actualFolderList.size(); i++) {
+
+            if(actualFolderList.get(i).contains("New folder")) {
+                Assert.assertTrue(false);
+                break;
+            }else{
+                Assert.assertTrue(true);
+            }
+
+
+        }
     }
 }
 
