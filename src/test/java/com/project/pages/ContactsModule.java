@@ -1,5 +1,6 @@
 package com.project.pages;
 
+import com.github.javafaker.Faker;
 import com.project.utilites.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -35,6 +36,16 @@ public class ContactsModule {
     @FindBy(xpath = "(//button[@test-attr='1'])[4]")
     public WebElement Nc_Group_EU10_3dots_2ndInGroup_List;
 
+    @FindBy(xpath = "//span[@title='23']")
+    public WebElement Nc_Group_23;
+
+    @FindBy(xpath = "//span[@title='Group_28']")
+    public WebElement Nc_Group_Group_28;
+
+
+    @FindBy(xpath = "//span[@title='Group EU10']")
+    public WebElement Nc_Group_Group_EU10;
+
    // (//button[@aria-haspopup='true'])[4]
 
     @FindBy(xpath = "(//a[@href='#'])[9]")     // add second person in list
@@ -67,19 +78,27 @@ public class ContactsModule {
     @FindBy(css = "span.multiselect__placeholder")
     public WebElement Nc_AddPropertyTypeInput2;
 
-    @FindBy(xpath = "(//button[@aria-haspopup='true'])[4]")
+    @FindBy(xpath = "(//button[@test-attr='1'])[4]")
     public WebElement Nc_group3DotsButton;
 
+//(//button[@aria-haspopup='true'])[4]
     @FindBy(xpath = "//span[@class='action-button__text']")
     public WebElement Nc_plusSingAddContacts_group;
 
     // New Contact locators
 
+    Faker faker=new Faker();
+
+    public Faker getFaker() {
+
+        return faker;
+    }
+
     @FindBy(xpath = "//button")
     public WebElement NewContact_plusNewContact;
 
-    @FindBy(xpath = "(//input)[20]")
-    public WebElement NewContact_text;
+    @FindBy(css = "input[id='contact-fullname']")
+    public WebElement NewContact_New_contact;
 
     @FindBy(xpath = "(//input)[21]")
     public WebElement NewContact_Company;

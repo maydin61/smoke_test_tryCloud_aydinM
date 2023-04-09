@@ -1,8 +1,10 @@
 package com.project.step_definitions;
 
+import com.github.javafaker.Faker;
 import com.project.pages.ContactsModule;
 import com.project.utilites.Driver;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -17,6 +19,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class ContanctModule_StepDefinition {
 
     ContactsModule contactsModule = new ContactsModule();
+    Faker faker = new Faker();
 
     @When("user should able to click to -Contacts icon- on dashboard page, then go Contacts module page")
     public void user_should_able_to_click_to_contacts_icon_on_dashboard_page_then_go_contacts_module_page() {
@@ -159,11 +162,85 @@ public class ContanctModule_StepDefinition {
 
     @Then("the user can click any contact and add it to {string} group")
     public void theUserCanClickAnyContactAndAddItToGroup(String arg0) {
-        contactsModule.Nc_Group_EU10_3dots_2ndInGroup_List.click();
+       contactsModule.Nc_Group_EU10_3dots_2ndInGroup_List.click();
         contactsModule.NewContact_plusNewContact.click();
         contactsModule.Nc_SearchContacts2Selection.click();
         contactsModule.Nc_SearchContacts_AddToGroupButton.click();
 
+    }
+
+    @And("the user should able to see the all group names")
+    public void theUserShouldAbleToSeeTheAllGroupNames() {
+        System.out.println("contactsModule.Nc_Group_23.getText() = " + contactsModule.Nc_Group_23.getText());
+        System.out.println("contactsModule.Nc_Group_Group_EU10.getText() = " + contactsModule.Nc_Group_Group_EU10.getText());
+        System.out.println("contactsModule.Nc_Group_Group_28.getText() = " + contactsModule.Nc_Group_Group_28.getText());
+
+
+    }
+// New Contact addition
+    @Given("the user can see on contact page -New Contact- text")
+    public void theUserCanSeeOnContactPageNewContactText() {
+        contactsModule.NewContact_plusNewContact.click();
+    }
+
+    @Then("the user can input -full name- of new contact")
+    public void theUserCanInputFullNameOfNewContact() {
+        contactsModule.NewContact_New_contact.click();
+        contactsModule.NewContact_New_contact.sendKeys(faker.name().lastName());
+
+
+    }
+
+    @And("the user can add -Company-")
+    public void theUserCanAddCompany() {
+        contactsModule.NewContact_Company.sendKeys(faker.company().industry());
+    }
+
+    @And("the user can add -Title-")
+    public void theUserCanAddTitle() {
+        contactsModule.NewContact_title.sendKeys(faker.job().title());
+    }
+
+    @And("the user can add -work- -Phone-")
+    public void theUserCanAddWorkPhone() {
+        contactsModule.NewContact_Home_Dropdown_Phone.sendKeys("Work");
+        contactsModule.NewContact_Phone_Input.sendKeys(faker.phoneNumber().cellPhone());
+
+    }
+
+    @And("the user can add -Home- -Post office box-")
+    public void theUserCanAddHomePostOfficeBox() {
+        contactsModule.NewContact_PostOfficeBox.sendKeys("112");
+    }
+
+    @And("the user can add -Home- -Address-")
+    public void theUserCanAddHomeAddress() {
+        contactsModule.NewContact_Address_Address.sendKeys(faker.address().streetName());
+    }
+
+    @And("the user can add -Home- -Extended address-")
+    public void theUserCanAddHomeExtendedAddress() {
+        contactsModule.NewContact_ExtendedAddress.sendKeys(faker.address().streetAddressNumber());
+    }
+
+    @And("the user can add -Home- -Postal code-")
+    public void theUserCanAddHomePostalCode() {
+        contactsModule.NewContact_PostalCode.sendKeys(faker.crypto().sha1());
+    }
+
+    @And("the user can add -Home- -City-")
+    public void theUserCanAddHomeCity() {
+        contactsModule.NewContact_City.sendKeys(faker.nation().capitalCity());
+    }
+
+    @And("the user can add -Home- -State or Province-")
+    public void theUserCanAddHomeStateOrProvince() {
+        contactsModule.NewContact_StataOrProvince.sendKeys(faker.country().capital());
+    }
+
+    @And("the user can add -Home- -Country-")
+    public void theUserCanAddHomeCountry() {
+        contactsModule.NewContact_Country.sendKeys(faker.country().name());
     }
 }
 

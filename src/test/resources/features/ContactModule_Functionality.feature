@@ -26,13 +26,13 @@ Feature: As a user, I should be able to create a new group and
     Examples: New group names to add tryCloud, Contact Module
       | New group |
      # | Group22   |
-      | Group_28   |
-   #   | Group EU10 |
+     # | Group_28   |
+      | Group EU10 |
 
 
 
   Scenario: AC02- User can add any existing contact from the groups dropdown menu existing
-                  inside that specific contact’s own info menu
+                  inside that specific contact own info menu
     When the user can add a new contact to his or her group selected
     Then The user should able to click - + Add contacts-
     And The user should able to see -Search Contacts- and -all contacts- listed
@@ -47,6 +47,7 @@ Feature: As a user, I should be able to create a new group and
     And the user can enter new group name "Group EU10" in to the box
     And the user can click all contacts button
     Then the user can click any contact and add it to "Group EU10" group
+    And the user should able to see the all group names
 
   Scenario: AC04 User can add a new property as “Birthday” to the contact’s info page from the “Add new property” dropdown menu
 
@@ -56,4 +57,17 @@ Feature: As a user, I should be able to create a new group and
     And user should able to see the drop down menu while clicking -Choose property type- span
     And user should able to add a new property as "Birthday" from dro[down menu
 
-  Scenario: AC05-Delete this line and write your own AC
+  Scenario: AC05-Add new contact(s) the general list with required information
+
+    Given the user can see on contact page -New Contact- text
+    Then the user can input -full name- of new contact
+    And the user can add -Company-
+    And the user can add -Title-
+    And the user can add -work- -Phone-
+    And the user can add -Home- -Post office box-
+    And the user can add -Home- -Address-
+    And the user can add -Home- -Extended address-
+    And the user can add -Home- -Postal code-
+    And the user can add -Home- -City-
+    And the user can add -Home- -State or Province-
+    And the user can add -Home- -Country-
