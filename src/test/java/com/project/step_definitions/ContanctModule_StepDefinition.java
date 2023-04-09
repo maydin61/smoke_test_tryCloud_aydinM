@@ -44,12 +44,12 @@ public class ContanctModule_StepDefinition {
     }
 
     @And("user should able to type a {string} name in to input box and while clicking arrow icon creat a new group")
-    public void userShouldAbleToTypeANameInToInputBoxAndWhileClickingArrowIconCreatANewGroup(String arg0) {
-        contactsModule.Nc_CreatANewGroupInput.sendKeys(arg0);
+    public void userShouldAbleToTypeANameInToInputBoxAndWhileClickingArrowIconCreatANewGroup(String newGroupName) {
+        contactsModule.Nc_CreatANewGroupInput.sendKeys(newGroupName);
         contactsModule.Nc_CreatANewGroupArrowIcon.click();
         String actualTextNewGroup=contactsModule.Nc_NewCreatedGroup.getText();
         System.out.println("actualTextNewGroup = " + actualTextNewGroup);
-        Assert.assertEquals(actualTextNewGroup,"Group EU10");
+        Assert.assertEquals("Group EU10",actualTextNewGroup);
 
     }
     @Then("user should able to add new Contacts from -Add contact- while clicking -...- icon")

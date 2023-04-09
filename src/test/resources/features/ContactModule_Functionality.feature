@@ -8,7 +8,7 @@ Feature: As a user, I should be able to create a new group and
           2-User can add any existing contact from the groups dropdown menu existing inside that specific contact’s own info menu
           3-User can see all the available groups name through the groups dropdown menu existing in the contact’s own info menu
           4-User can add a new property as “Birthday” to the contact’s info page from the “Add new property” dropdown menu
-          5-Delete this line and write your own AC.
+          5-Add new contact(s) to the general list with required information
 
   Background:
     Given User is on the dashboard page
@@ -57,7 +57,7 @@ Feature: As a user, I should be able to create a new group and
     And user should able to see the drop down menu while clicking -Choose property type- span
     And user should able to add a new property as "Birthday" from dro[down menu
 
-  Scenario: AC05-Add new contact(s) the general list with required information
+  Scenario: AC05-Add new contact(s) to the general list with required information
 
     Given the user can see on contact page -New Contact- text
     Then the user can input -full name- of new contact
