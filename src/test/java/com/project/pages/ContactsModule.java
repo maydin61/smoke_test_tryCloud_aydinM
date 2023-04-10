@@ -87,13 +87,6 @@ public class ContactsModule {
 
     // New Contact locators
 
-    Faker faker=new Faker();
-
-    public Faker getFaker() {
-
-        return faker;
-    }
-
     @FindBy(xpath = "//button")
     public WebElement NewContact_plusNewContact;
 
