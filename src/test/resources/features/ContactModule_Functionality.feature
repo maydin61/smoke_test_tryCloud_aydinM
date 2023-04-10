@@ -4,7 +4,7 @@ Feature: As a user, I should be able to create a new group and
 
    Acceptance Criteria:
 
-          1- User can create a new group under Contacts Module
+          1-User can create a new group under Contacts Module
           2-User can add any existing contact from the groups dropdown menu existing inside that specific contact’s own info menu
           3-User can see all the available groups name through the groups dropdown menu existing in the contact’s own info menu
           4-User can add a new property as “Birthday” to the contact’s info page from the “Add new property” dropdown menu
