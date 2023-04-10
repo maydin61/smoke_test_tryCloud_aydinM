@@ -24,7 +24,7 @@ public class FilesPage extends BasePage {
     @FindBy(xpath = "//span[@class='displayname']")
     public WebElement uploadFileIcon;
 
-    @FindBy(css = "input[type=file]")
+    @FindBy(css = "//div[@class='newFileMenu popovermenu bubble menu open menu-left']/ul/li[1]")
     public WebElement FileUpload;
 
     @FindBy(xpath = "(//span[@class='nametext'])[1]")

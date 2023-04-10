@@ -103,17 +103,17 @@ public class SearchStepDefinitions {
 
     @When("user clicks plus button")
     public void userClicksPlusButton() {
-        filesPage.plusButton.click();
+        filesPage.plusIcon.click();
     }
 
     @And("user clicks upload a file button")
     public void userClicksUploadAFileButton() {
-        filesPage.uploadAFile.click();
+        filesPage.FileUpload.click();
     }
 
     @Then("user passes the path of the image")
     public void userPassesThePathOfTheImage() {
-    filesPage.uploadAFile.sendKeys("C:\\Users\\Nati\\Downloads\\cats3.jpg" + Keys.ENTER);
+    filesPage.FileUpload.sendKeys("C:\\Users\\Nati\\Downloads\\cats3.jpg" + Keys.ENTER);
 
     }
 }
