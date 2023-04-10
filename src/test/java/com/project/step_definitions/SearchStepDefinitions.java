@@ -95,4 +95,25 @@ public class SearchStepDefinitions {
         System.out.println(rightHeaderElements.file.getAttribute("title"));
         Assert.assertTrue(rightHeaderElements.file.getAttribute("title").equals(rightHeaderElements.searchBox.getText()));
     }
+
+    @Given("user is under the Files module")
+    public void userIsUnderTheFilesModule() {
+        Driver.getDriver().navigate().to("https://qa.trycloud.net/index.php/apps/files/?dir=/&fileid=8735");
+    }
+
+    @When("user clicks plus button")
+    public void userClicksPlusButton() {
+        filesPage.plusButton.click();
+    }
+
+    @And("user clicks upload a file button")
+    public void userClicksUploadAFileButton() {
+        filesPage.uploadAFile.click();
+    }
+
+    @Then("user passes the path of the image")
+    public void userPassesThePathOfTheImage() {
+    filesPage.uploadAFile.sendKeys("C:\\Users\\Nati\\Downloads\\cats3.jpg" + Keys.ENTER);
+
+    }
 }

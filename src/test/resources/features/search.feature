@@ -54,6 +54,13 @@ Background:
       | calendar   |
       | deck       |
   @wip
+    Scenario: User can also see the images files under the Photos module when uploaded them
+      Given user is under the Files module
+      When user clicks plus button
+      And user clicks upload a file button
+      Then user passes the path of the image
+
+
     Scenario Outline: User should be able to easily modify their search query as needed,
     and the system should update the results accordingly
       When user clicks magnifying glass
