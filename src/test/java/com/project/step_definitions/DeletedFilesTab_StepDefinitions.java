@@ -8,7 +8,6 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 public class DeletedFilesTab_StepDefinitions {
-
     DeletedFilesTabPage deletedFilesTabPage = new DeletedFilesTabPage();
 
     @When("user clicks on -Files- button")
@@ -40,6 +39,17 @@ public class DeletedFilesTab_StepDefinitions {
     @Then("user should see the oldest deleted file in the first line")
     public void userShouldSeeTheOldestDeletedFileInTheFirstLine() {
         Assert.assertEquals(DeletedFilesTabPage.expectedLatestTime,deletedFilesTabPage.oldestDeletedFile.getAttribute("data-original-title"));
+    }
+
+    @And("user clicks on -Name- button")
+    public void userClicksOnNameButton() {
+        DeletedFilesTabPage.firstINAlphabet=DeletedFilesTabPage.orderByAlphabet();
+        deletedFilesTabPage.sortByName.click();
+    }
+
+    @Then("user should see all the deleted files alphabetically ordered")
+    public void userShouldSeeAllTheDeletedFilesAlphabeticallyOrdered() {
+        Assert.assertEquals(DeletedFilesTabPage.firstINAlphabet,deletedFilesTabPage.firstFile.getAttribute("data-original-title"));
     }
 
 }
