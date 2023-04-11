@@ -24,11 +24,10 @@ Feature: As a user, I should be able to create a new group and
     And user should able to add new Contacts from -Add contact- while clicking -...- icon
 
     Examples: New group names to add tryCloud, Contact Module
-      | New group |
-     # | Group22   |
+      | New group  |
       | Group_28   |
       | Group EU10 |
-
+      | Group22    |
 
   @TCLOUD10-516
   Scenario: AC02- User can add any existing contact from the groups dropdown menu existing

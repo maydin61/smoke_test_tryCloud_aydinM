@@ -27,7 +27,7 @@ public class ContactsModule {
     @FindBy(css = "input.action-input__input.focusable")
     public WebElement Nc_CreatANewGroupInput;
 
-    @FindBy(css = "label.action-input__label")
+    @FindBy(xpath = "//label[@for='action-uloco']") //label[@for='action-zzghq']
     public WebElement Nc_CreatANewGroupArrowIcon;
 
     @FindBy(xpath = "(//span[@class='app-navigation-entry__title'])[4]")
@@ -46,9 +46,21 @@ public class ContactsModule {
     @FindBy(xpath = "//span[@title='Group EU10']")
     public WebElement Nc_Group_Group_EU10;
 
+    @FindBy(xpath = "(//button[@test-attr='1'])[3]")
+    public WebElement Nc_Group22_3dots;
+
+    @FindBy(xpath = "(//button[@test-attr='1'])[4]")
+    public WebElement Nc_Group_EU10_3dots;
+
+    @FindBy(xpath = "(//button[@test-attr='1'])[5]")
+    public WebElement Nc_Group_28_3dots;
+
+    @FindBy(xpath = "(//span[@class='action-button__text'])[5]")
+    public WebElement Nc_Group_22_EU10_28_plusAdd_Contacts;
+
    // (//button[@aria-haspopup='true'])[4]
 
-    @FindBy(xpath = "(//a[@href='#'])[9]")     // add second person in list
+    @FindBy(xpath = "(//span[@class='user-bubble__title'])[9]")     // add 9th person in list
     public WebElement Nc_SearchContacts2Selection;
 
     @FindBy(xpath = "//div[@class='entity-picker__navigation']//button[2]")  // add second person in list
@@ -82,7 +94,7 @@ public class ContactsModule {
     public WebElement Nc_group3DotsButton;
 
 //(//button[@aria-haspopup='true'])[4]
-    @FindBy(xpath = "//span[@class='action-button__text']")
+    @FindBy(xpath = "(//span[@class='action-button__text'])[5]")
     public WebElement Nc_plusSingAddContacts_group;
 
     // New Contact locators

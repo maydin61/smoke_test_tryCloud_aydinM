@@ -46,7 +46,7 @@ public class ContanctModule_StepDefinition {
     @And("user should able to type a {string} name in to input box and while clicking arrow icon creat a new group")
     public void userShouldAbleToTypeANameInToInputBoxAndWhileClickingArrowIconCreatANewGroup(String newGroupName) {
         contactsModule.Nc_CreatANewGroupInput.sendKeys(newGroupName);
-        contactsModule.Nc_CreatANewGroupArrowIcon.click();
+        contactsModule.Nc_CreatANewGroupInput.sendKeys(Keys.ENTER);
         String actualTextNewGroup=contactsModule.Nc_NewCreatedGroup.getText();
         System.out.println("actualTextNewGroup = " + actualTextNewGroup);
         Assert.assertEquals("Group EU10",actualTextNewGroup);
@@ -54,13 +54,20 @@ public class ContanctModule_StepDefinition {
     }
     @Then("user should able to add new Contacts from -Add contact- while clicking -...- icon")
     public void user_should_able_to_add_new_contacts_from_add_contact_while_clicking_icon() {
-        contactsModule.Nc_Group_EU10_3dots_2ndInGroup_List.click();
-
-        WebElement n=contactsModule.Nc_Group_EU10_3dots_2ndInGroup_List;
-        Select select=new Select(n);
-        select.selectByVisibleText("Add contacts");
+        contactsModule.Nc_Group22_3dots.click();
+        contactsModule.Nc_Group_22_EU10_28_plusAdd_Contacts.click();
         contactsModule.Nc_SearchContacts2Selection.click();
         contactsModule.Nc_SearchContacts_AddToGroupButton.click();
+
+//        contactsModule.Nc_Group_28_3dots.click();
+//        contactsModule.Nc_Group_22_EU10_28_plusAdd_Contacts.click();
+//        contactsModule.Nc_SearchContacts2Selection.click();
+//        contactsModule.Nc_SearchContacts_AddToGroupButton.click();
+//
+//        contactsModule.Nc_Group_EU10_3dots.click();
+//        contactsModule.Nc_Group_22_EU10_28_plusAdd_Contacts.click();
+//        contactsModule.Nc_SearchContacts2Selection.click();
+//        contactsModule.Nc_SearchContacts_AddToGroupButton.click();
 
     }
 
@@ -147,12 +154,11 @@ public class ContanctModule_StepDefinition {
     @And("the user can enter new group name {string} in to the box")
     public void theUserCanEnterNewGroupNameInToTheBox(String arg0) {
         contactsModule.Nc_CreatANewGroupInput.sendKeys(arg0);
-        contactsModule.Nc_CreatANewGroupArrowIcon.click();
+        contactsModule.Nc_CreatANewGroupInput.sendKeys(Keys.ENTER);
+
+        //contactsModule.Nc_CreatANewGroupArrowIcon.click();
         contactsModule.Nc_Group_EU10_3dots_2ndInGroup_List.click();
 
-        contactsModule.Nc_plusSingAddContacts_group.click();
-        contactsModule.Nc_SearchContacts2Selection.click();
-        contactsModule.Nc_SearchContacts_AddToGroupButton.click();
     }
 
     @And("the user can click all contacts button")
@@ -162,8 +168,7 @@ public class ContanctModule_StepDefinition {
 
     @Then("the user can click any contact and add it to {string} group")
     public void theUserCanClickAnyContactAndAddItToGroup(String arg0) {
-       contactsModule.Nc_Group_EU10_3dots_2ndInGroup_List.click();
-        contactsModule.NewContact_plusNewContact.click();
+        contactsModule.Nc_plusSingAddContacts_group.click();
         contactsModule.Nc_SearchContacts2Selection.click();
         contactsModule.Nc_SearchContacts_AddToGroupButton.click();
 
@@ -171,10 +176,9 @@ public class ContanctModule_StepDefinition {
 
     @And("the user should able to see the all group names")
     public void theUserShouldAbleToSeeTheAllGroupNames() {
-        System.out.println("contactsModule.Nc_Group_23.getText() = " + contactsModule.Nc_Group_23.getText());
-        System.out.println("contactsModule.Nc_Group_Group_EU10.getText() = " + contactsModule.Nc_Group_Group_EU10.getText());
-        System.out.println("contactsModule.Nc_Group_Group_28.getText() = " + contactsModule.Nc_Group_Group_28.getText());
-
+       contactsModule.Nc_Group_Group_EU10.isDisplayed();
+       contactsModule.Nc_Group_Group_28.isDisplayed();
+       contactsModule.Nc_Group22_3dots.isDisplayed();
 
     }
 // New Contact addition
