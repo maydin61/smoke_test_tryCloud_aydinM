@@ -48,4 +48,6 @@ public class LogOutStepDefinitions {
         String actualURL = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualURL, expectedURL);
     }
+
+
 }

@@ -11,11 +11,13 @@ public class LoginPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(id = "user")
-    public WebElement usernameInput;
+    //@FindBy(xpath = "//input[@id='user']")
+   // public WebElement usernameInput;
 
     @FindBy(id = "password")
     public WebElement passwordInput;
+    @FindBy(xpath = "//input[@name='user']")
+    public WebElement usernameInput;
 
     @FindBy(id = "submit-form")
     public WebElement logInButton;
@@ -34,8 +36,8 @@ public class LoginPage {
 
 
 
-    @FindBy(id = "user")
-    public WebElement userNameInbox;
+//    @FindBy(id = "user")
+//    public WebElement userNameInbox;
     @FindBy(id = "password")
     public WebElement paswordInbox;
 

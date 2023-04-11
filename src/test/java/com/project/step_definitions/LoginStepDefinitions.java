@@ -10,6 +10,8 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 
+import javax.crypto.spec.PSource;
+
 public class LoginStepDefinitions {
 
     LoginPage loginPage = new LoginPage();
@@ -18,23 +20,27 @@ public class LoginStepDefinitions {
     public void user_is_on_the_login_page() {
         Driver.getDriver().get(ConfigurationReader.getProperty("web.url"));
     }
+
     @When("user enters valid username")
     public void user_enters_valid_username() {
-        loginPage.usernameInput.sendKeys("Employee25");
+        loginPage.usernameInput.sendKeys("Employee95");
     }
+
     @When("user enters valid password")
     public void user_enters_valid_password() {
         loginPage.passwordInput.sendKeys("Employee123");
     }
+
     @When("user clicks on Login button")
     public void user_clicks_on_login_button() {
         loginPage.logInButton.click();
     }
+
     @Then("user should see the dashboard")
     public void user_should_see_the_dashboard() {
         String expectedURL = "https://qa.trycloud.net/index.php/apps/dashboard/";
         String actualURL = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals(actualURL, expectedURL);
+        Assert.assertEquals(expectedURL, actualURL);
     }
 
     @And("user hits ENTER key from keyboard")
@@ -132,5 +138,19 @@ public class LoginStepDefinitions {
 
 
     }
-}
 
+    @When("user login")
+    public void userLogin() {
+        loginPage.login();
+
+    }
+
+    @When("user input {string} and {string}")
+    public void userInputAnd(String username, String password) throws InterruptedException {
+        Driver.getDriver().get(ConfigurationReader.getProperty("web.url"));
+        loginPage.usernameInput.sendKeys("Employee25");
+        loginPage.passwordInput.sendKeys("Employee123");
+        Thread.sleep(3000);
+
+    }
+}

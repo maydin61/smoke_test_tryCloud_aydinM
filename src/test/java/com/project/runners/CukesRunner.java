@@ -14,12 +14,11 @@ import org.junit.runner.RunWith;
                 "json:target/cucumber.json",
 
 
-
         },
         features = "src/test/resources/features",
         glue = "com/project/step_definitions",
         dryRun = false,
-        tags = "@TCLOUD10-504"
+        tags = "@Status"
 )
 
 
