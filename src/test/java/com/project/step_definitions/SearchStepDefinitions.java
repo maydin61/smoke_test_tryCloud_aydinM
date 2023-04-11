@@ -12,6 +12,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 
 public class SearchStepDefinitions {
 
@@ -101,19 +102,24 @@ public class SearchStepDefinitions {
         Driver.getDriver().navigate().to("https://qa.trycloud.net/index.php/apps/files/?dir=/&fileid=8735");
     }
 
-    @When("user clicks plus button")
-    public void userClicksPlusButton() {
-        filesPage.plusIcon.click();
+    @When("user checks for the jpg files")
+    public void userChecksForTheJpgFiles() {
     }
 
-    @And("user clicks upload a file button")
-    public void userClicksUploadAFileButton() {
-        filesPage.FileUpload.click();
+    @And("user navigates to Photos module")
+    public void userNavigatesToPhotosModule() {
+        Driver.getDriver().navigate().to("https://qa.trycloud.net/index.php/apps/photos/?dir=/&fileid=8735");
     }
 
-    @Then("user passes the path of the image")
-    public void userPassesThePathOfTheImage() {
-    filesPage.FileUpload.sendKeys("C:\\Users\\Nati\\Downloads\\cats3.jpg" + Keys.ENTER);
-
+    @Then("user should see those jpg files here")
+    public void userShouldSeeThoseJpgFilesHere() {
+        for (WebElement imageFromFiles : filesPage.imagesFromFiles) {
+            String id1 = imageFromFiles.getAttribute("data-id");
+            for (WebElement imagesFromPhoto : photosPage.imagesFromPhotos) {
+                String id2 = imagesFromPhoto.getAttribute("aria-describedby");
+                String actualID2 = id2.substring(id2.indexOf("e")+1);
+                Assert.assertTrue(id1.equals(actualID2));
+            }
+        }
     }
 }

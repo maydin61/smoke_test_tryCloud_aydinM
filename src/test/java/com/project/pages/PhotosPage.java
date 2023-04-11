@@ -12,6 +12,8 @@ public class PhotosPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(xpath = "//table[@id='filestable']//span[.='.jpg']")
-    public List<WebElement> photos;
+    @FindBy(xpath = "//span[@class='transition-group']/img")
+    public List<WebElement> imagesFromPhotos;
+
+
 }
