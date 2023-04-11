@@ -1,4 +1,4 @@
-
+@wip
 Feature: As a user, I should be able to search file
   or contact from the Dashboard and see the photos under Photos Module
 
@@ -17,11 +17,11 @@ Background:
       | dashboard  | 123      |
       | files      | wer      |
       | photos     | jj       |
-      | activity   | kk       |
+      | activity   | wer      |
       | talk       | 123      |
       | mail       | talk     |
       | contacts   | fghjk    |
-      | circles    | 11       |
+      | circles    | aa        |
       | calendar   | ii       |
       | deck       | aa       |
 
@@ -55,7 +55,7 @@ Background:
       | calendar   |
       | deck       |
 
-    @wip
+
     Scenario: User can also see the images files under the Photos module when uploaded them
       Given user is under the Files module
       When user checks for the jpg files
