@@ -2,7 +2,6 @@ package com.project.step_definitions;
 
 import com.project.pages.LogOutPage;
 import com.project.pages.LoginPage;
-import com.project.utilites.ConfigurationReader;
 import com.project.utilites.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -17,10 +16,7 @@ public class LogOutStepDefinitions {
 
     @Given("User is on the dashboard page")
     public void user_is_on_the_dashboard_page() {
-        Driver.getDriver().get(ConfigurationReader.getProperty("web.url"));
-        loginPage.usernameInput.sendKeys("Employee105");
-        loginPage.passwordInput.sendKeys("Employee123");
-        loginPage.logInButton.click();
+        loginPage.login();
     }
     @When("user clicks on -E- button")
     public void user_clicks_on_e_button() {
