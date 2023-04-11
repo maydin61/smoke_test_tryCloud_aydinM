@@ -150,4 +150,10 @@ public class DeletedFilesTabPage {
    }
 
    public static String firstINAlphabet;
+
+   @FindBy(xpath = "//*[@id='fileList']/tr[7]/td[2]/a/span[2]/a[2]")
+   public WebElement threeDots;
+
+   @FindBy(xpath = "//a[@class='menuitem action action-delete permanent']")
+   public WebElement deletePermanentlyButton;
 }

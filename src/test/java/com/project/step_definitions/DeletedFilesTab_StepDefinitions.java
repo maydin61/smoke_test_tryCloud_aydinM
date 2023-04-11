@@ -17,11 +17,12 @@ public class DeletedFilesTab_StepDefinitions {
     @When("user clicks on -Deleted files- button")
     public void user_clicks_on_deleted_files_button() {
         deletedFilesTabPage.deletedFiles.click();
-        DeletedFilesTabPage.expectedTime=DeletedFilesTabPage.closestTime();
+
     }
 
     @When("user clicks on -Deleted- button")
     public void user_clicks_on_deleted_button() {
+        DeletedFilesTabPage.expectedTime=DeletedFilesTabPage.closestTime();
         BrowserUtils.waitForVisibility(deletedFilesTabPage.deletedButton,10);
         BrowserUtils.doubleClick(deletedFilesTabPage.deletedButton);
     }
@@ -52,4 +53,13 @@ public class DeletedFilesTab_StepDefinitions {
         Assert.assertEquals(DeletedFilesTabPage.firstINAlphabet,deletedFilesTabPage.firstFile.getAttribute("data-original-title"));
     }
 
+    @And("user clicks on -Three dots- icon in any file line")
+    public void userClicksOnThreeDotsIconInAnyFileLine() {
+        deletedFilesTabPage.threeDots.click();
+    }
+
+    @Then("user should be able to click on -Delete permanently- button")
+    public void userShouldBeAbleToClickOnDeletePermanentlyButton() {
+        deletedFilesTabPage.deletePermanentlyButton.click();
+    }
 }
