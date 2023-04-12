@@ -61,24 +61,18 @@ public class ContanctModule_StepDefinition {
 
         contactsModule.Nc_Group_EU10_3dots.click();
         Thread.sleep(1500);
+        WebElement elementName = Driver.getDriver().findElement (By.xpath("//span[@class='action-button__icon icon-add']"));
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.valueOf(elementName))));
+                    elementName.click();
+        Thread.sleep(1500);
         contactsModule.Nc_Group_22_EU10_28_plusAdd_Contacts.click();
         Thread.sleep(1500);
-
         contactsModule.Nc_SearchContacts2Selection.click();
-        Thread.sleep(1500);
         contactsModule.Nc_SearchContacts_AddToGroupButton.click();
 
         String numberOfContactInGroupAfter = contactsModule.Nc_Counters_SecondGroupCounter.getText();
         Assert.assertFalse(numberOfContactInGroupBefore.equals(numberOfContactInGroupAfter));
-//        contactsModule.Nc_Group_28_3dots.click();
-//        contactsModule.Nc_Group_22_EU10_28_plusAdd_Contacts.click();
-//        contactsModule.Nc_SearchContacts2Selection.click();
-//        contactsModule.Nc_SearchContacts_AddToGroupButton.click();
-//
-//        contactsModule.Nc_Group_EU10_3dots.click();
-//        contactsModule.Nc_Group_22_EU10_28_plusAdd_Contacts.click();
-//        contactsModule.Nc_SearchContacts2Selection.click();
-//        contactsModule.Nc_SearchContacts_AddToGroupButton.click();
 
     }
 

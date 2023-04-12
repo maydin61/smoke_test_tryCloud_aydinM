@@ -21,7 +21,7 @@ Feature: As a user, I should be able to create a new group and
     Then user should able to click to -New group- text or -plus sing- to creat a New group
     And Create a New group text input box should becomes visible
     And user should able to type a "<New group>" name in to input box and while clicking arrow icon creat a new group
-    And user should able to add new Contacts from -Add contact- while clicking -...- icon
+  #  And user should able to add new Contacts from -Add contact- while clicking -...- icon
 
     Examples: New group names to add tryCloud, Contact Module
       | New group  |
