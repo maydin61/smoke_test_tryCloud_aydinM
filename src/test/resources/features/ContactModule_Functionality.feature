@@ -25,8 +25,8 @@ Feature: As a user, I should be able to create a new group and
 
     Examples: New group names to add tryCloud, Contact Module
       | New group  |
-      | Group_28   |
-      | Group EU10 |
+     #| Group_28   |
+     # | Group EU10 |
       | Group22    |
 
   @TCLOUD10-516

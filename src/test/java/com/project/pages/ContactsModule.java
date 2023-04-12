@@ -55,6 +55,9 @@ public class ContactsModule {
     @FindBy(xpath = "(//button[@test-attr='1'])[5]")
     public WebElement Nc_Group_28_3dots;
 
+    @FindBy(xpath = "(//button[@class='action-button focusable'])[5]")
+    public WebElement Nc_Group_22_plusSingAddContacts;
+
     @FindBy(xpath = "(//span[@class='action-button__text'])[5]")
     public WebElement Nc_Group_22_EU10_28_plusAdd_Contacts;
 
@@ -71,6 +74,12 @@ public class ContactsModule {
 
     @FindBy(xpath = "//div[@class='multiselect property__value multiselect--above multiselect--single']")
     public WebElement Nc_AddNewProperty;
+
+    @FindBy(xpath = "//div[@class='property__value property__title--right'][4]")
+    public WebElement Nc_plusNewProperty4thElement;
+
+    @FindBy(xpath = "//*[contains(text(),'Birthday')]")
+    public WebElement Nc_plusNewProperty4thElementBirthday;
 
     @FindBy(xpath = "(//input)[37]")
     public WebElement Nc_AddPropertyTypeInput;
@@ -105,10 +114,10 @@ public class ContactsModule {
     @FindBy(css = "input[id='contact-fullname']")
     public WebElement NewContact_New_contact;
 
-    @FindBy(xpath = "(//input)[21]")
+    @FindBy(xpath = "//input[@placeholder='Company']")
     public WebElement NewContact_Company;
 
-    @FindBy(xpath = "(//input)[22]")
+    @FindBy(xpath = "//input[@placeholder='Title']")
     public WebElement NewContact_title;
 
     @FindBy(xpath = "(//input)[23]")
@@ -156,7 +165,21 @@ public class ContactsModule {
     @FindBy (xpath = "(//button[@class='action-item action-item--single property__actions icon-delete undefined undefined has-tooltip'])[2]")
     public WebElement NewContact_Email_Phone;
 
+// counters
+    @FindBy(xpath = "//div[@class='app-navigation-entry__counter']")
+    public WebElement Nc_Counters_AllContacts;
 
+    @FindBy(xpath = "(//div[@class='app-navigation-entry__counter'])[2]")
+    public WebElement Nc_Counters_NotGrouped;
+
+    @FindBy(xpath = "(//div[@class='app-navigation-entry__counter'])[3]")
+    public WebElement Nc_Counters_FirstGroupCounter;
+
+    @FindBy(xpath = "(//div[@class='app-navigation-entry__counter'])[4]")
+    public WebElement Nc_Counters_SecondGroupCounter;
+
+    @FindBy(xpath = "(//div[@class='app-navigation-entry__counter'])[5]")
+    public WebElement Nc_Counters_ThirthGroupCounter;
 
 
 

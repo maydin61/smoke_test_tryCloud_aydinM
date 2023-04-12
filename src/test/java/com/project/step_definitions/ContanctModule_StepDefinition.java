@@ -20,6 +20,8 @@ public class ContanctModule_StepDefinition {
 
     ContactsModule contactsModule = new ContactsModule();
     Faker faker = new Faker();
+    WebDriverWait wait =new WebDriverWait(Driver.getDriver(),10 );
+
 
     @When("user should able to click to -Contacts icon- on dashboard page, then go Contacts module page")
     public void user_should_able_to_click_to_contacts_icon_on_dashboard_page_then_go_contacts_module_page() {
@@ -53,12 +55,21 @@ public class ContanctModule_StepDefinition {
 
     }
     @Then("user should able to add new Contacts from -Add contact- while clicking -...- icon")
-    public void user_should_able_to_add_new_contacts_from_add_contact_while_clicking_icon() {
-        contactsModule.Nc_Group22_3dots.click();
+    public void user_should_able_to_add_new_contacts_from_add_contact_while_clicking_icon() throws InterruptedException {
+
+        String numberOfContactInGroupBefore = contactsModule.Nc_Counters_SecondGroupCounter.getText();
+
+        contactsModule.Nc_Group_EU10_3dots.click();
+        Thread.sleep(1500);
         contactsModule.Nc_Group_22_EU10_28_plusAdd_Contacts.click();
+        Thread.sleep(1500);
+
         contactsModule.Nc_SearchContacts2Selection.click();
+        Thread.sleep(1500);
         contactsModule.Nc_SearchContacts_AddToGroupButton.click();
 
+        String numberOfContactInGroupAfter = contactsModule.Nc_Counters_SecondGroupCounter.getText();
+        Assert.assertFalse(numberOfContactInGroupBefore.equals(numberOfContactInGroupAfter));
 //        contactsModule.Nc_Group_28_3dots.click();
 //        contactsModule.Nc_Group_22_EU10_28_plusAdd_Contacts.click();
 //        contactsModule.Nc_SearchContacts2Selection.click();
@@ -98,11 +109,16 @@ public class ContanctModule_StepDefinition {
 
     @And("user should able to add a new property as {string} from dro[down menu")
     public void userShouldAbleToAddANewPropertyAsFromDroDownMenu(String arg0) throws InterruptedException {
-        WebDriverWait wait =new WebDriverWait(Driver.getDriver(),10 );
+       // WebDriverWait wait =new WebDriverWait(Driver.getDriver(),10 );
         WebElement element = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/main/div/div[2]/section/div[6]/h3/div[2]")));
         contactsModule.Nc_AddPropertyTypeInput.sendKeys(arg0,Keys.ENTER);
         Thread.sleep(3000);
+
+        String expectedText="Birthday";
+        String actualText = contactsModule.Nc_plusNewProperty4thElementBirthday.getText();
+        Assert.assertEquals(expectedText, actualText);
+
 
     }
 
@@ -114,14 +130,26 @@ public class ContanctModule_StepDefinition {
 
     @And("The user should able to see -Search Contacts- and -all contacts- listed")
     public void theUserShouldAbleToSeeSearchContactsAndAllContactsListed() {
-        contactsModule.Nc_AllContacts.isDisplayed();
+       // contactsModule.Nc_AllContacts.isDisplayed();
+        Assert.assertTrue(contactsModule.Nc_AllContacts.isDisplayed());
     }
 
     @And("the user should be able to click to -Add to group- button any contacts to add its own info menu")
-    public void theUserShouldBeAbleToClickToAddToGroupButtonAnyContactsToAddItsOwnInfoMenu() {
+    public void theUserShouldBeAbleToClickToAddToGroupButtonAnyContactsToAddItsOwnInfoMenu() throws InterruptedException {
 
         contactsModule.Nc_group3DotsButton.isEnabled();
         contactsModule.Nc_plusSingAddContacts_group.isDisplayed();
+        Thread.sleep(1500);
+//        contactsModule.Nc_SearchContacts2Selection.isEnabled();
+
+        Assert.assertTrue( contactsModule.Nc_group3DotsButton.isDisplayed());
+        Thread.sleep(2000);
+        contactsModule.Nc_group3DotsButton.click();
+        Assert.assertTrue( contactsModule.Nc_plusSingAddContacts_group.isDisplayed());
+        contactsModule.Nc_plusSingAddContacts_group.click();
+        Assert.assertTrue( contactsModule.Nc_SearchContacts2Selection.isEnabled());
+
+
     }
 
     @When("the user can add a new contact to his or her group selected")
@@ -180,16 +208,22 @@ public class ContanctModule_StepDefinition {
        contactsModule.Nc_Group_Group_28.isDisplayed();
        contactsModule.Nc_Group22_3dots.isDisplayed();
 
+       Assert.assertTrue(contactsModule.Nc_Group_Group_EU10.isDisplayed());
+       Assert.assertTrue(contactsModule.Nc_Group_Group_28.isDisplayed());
+
+
     }
 // New Contact addition
     @Given("the user can see on contact page -New Contact- text")
     public void theUserCanSeeOnContactPageNewContactText() {
         contactsModule.NewContact_plusNewContact.click();
+        Assert.assertTrue(contactsModule.NewContact_plusNewContact.isEnabled());
     }
 
     @Then("the user can input -full name- of new contact")
     public void theUserCanInputFullNameOfNewContact() {
         contactsModule.NewContact_New_contact.click();
+        Assert.assertTrue(contactsModule.NewContact_New_contact.isDisplayed());
         contactsModule.NewContact_New_contact.sendKeys(faker.name().lastName());
 
 
@@ -197,16 +231,22 @@ public class ContanctModule_StepDefinition {
 
     @And("the user can add -Company-")
     public void theUserCanAddCompany() {
+        Assert.assertTrue(contactsModule.NewContact_Company.isDisplayed());
         contactsModule.NewContact_Company.sendKeys(faker.company().industry());
+
     }
 
     @And("the user can add -Title-")
     public void theUserCanAddTitle() {
         contactsModule.NewContact_title.sendKeys(faker.job().title());
+        Assert.assertTrue(contactsModule.NewContact_title.isDisplayed());
+
     }
 
     @And("the user can add -work- -Phone-")
     public void theUserCanAddWorkPhone() {
+        Assert.assertTrue(contactsModule.NewContact_Phone_Input.isEnabled());
+
         contactsModule.NewContact_Home_Dropdown_Phone.sendKeys("Work");
         contactsModule.NewContact_Phone_Input.sendKeys(faker.phoneNumber().cellPhone());
 
@@ -214,37 +254,50 @@ public class ContanctModule_StepDefinition {
 
     @And("the user can add -Home- -Post office box-")
     public void theUserCanAddHomePostOfficeBox() {
+        Assert.assertTrue(contactsModule.NewContact_PostOfficeBox.isEnabled());
         contactsModule.NewContact_PostOfficeBox.sendKeys("112");
     }
 
     @And("the user can add -Home- -Address-")
     public void theUserCanAddHomeAddress() {
+        Assert.assertTrue(contactsModule.NewContact_Address_Address.isEnabled());
         contactsModule.NewContact_Address_Address.sendKeys(faker.address().streetName());
     }
 
     @And("the user can add -Home- -Extended address-")
     public void theUserCanAddHomeExtendedAddress() {
+        Assert.assertTrue( contactsModule.NewContact_ExtendedAddress.isEnabled());
+
         contactsModule.NewContact_ExtendedAddress.sendKeys(faker.address().streetAddressNumber());
     }
 
     @And("the user can add -Home- -Postal code-")
     public void theUserCanAddHomePostalCode() {
+        Assert.assertTrue(contactsModule.NewContact_PostalCode.isEnabled());
+
         contactsModule.NewContact_PostalCode.sendKeys(faker.crypto().sha1());
     }
 
     @And("the user can add -Home- -City-")
     public void theUserCanAddHomeCity() {
+        Assert.assertTrue(contactsModule.NewContact_City.isEnabled());
+
         contactsModule.NewContact_City.sendKeys(faker.nation().capitalCity());
     }
 
     @And("the user can add -Home- -State or Province-")
     public void theUserCanAddHomeStateOrProvince() {
+        Assert.assertTrue(contactsModule.NewContact_StataOrProvince.isEnabled());
+
         contactsModule.NewContact_StataOrProvince.sendKeys(faker.country().capital());
     }
 
     @And("the user can add -Home- -Country-")
-    public void theUserCanAddHomeCountry() {
+    public void theUserCanAddHomeCountry() throws InterruptedException {
+        Assert.assertTrue( contactsModule.NewContact_Country.isDisplayed());
         contactsModule.NewContact_Country.sendKeys(faker.country().name());
+        Thread.sleep(5000);
+
     }
 }
 
