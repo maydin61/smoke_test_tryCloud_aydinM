@@ -30,3 +30,10 @@ Feature:As a user, I should be able to see all deleted files and delete/restore 
     And user clicks on -Deleted files- button
     And user clicks on -Three dots- icon in any file line
     Then user should be able to click on -Delete permanently- button
+
+  Scenario: User can restore any deleted file and see it again under the All Files tab
+    When user clicks on -Files- button
+    And user clicks on -Deleted files- button
+    Then user selects a file
+    And user clicks on -Restore- button
+    Then user should be able to see the file under -All Files- tab

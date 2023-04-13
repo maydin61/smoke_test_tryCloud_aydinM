@@ -135,7 +135,7 @@ public class DeletedFilesTabPage {
     @FindBy(xpath = "//span[@class='nametext extra-data']")
     public WebElement firstFile;
 
-   public static String orderByAlphabet(){
+    public static String orderByAlphabet(){
        BrowserUtils.waitFor(3);
        scrollDown();
        scrollUp();
@@ -149,11 +149,18 @@ public class DeletedFilesTabPage {
        return firstINAlphabet;
    }
 
-   public static String firstINAlphabet;
+    public static String firstINAlphabet;
 
-   @FindBy(xpath = "//*[@id='fileList']/tr[7]/td[2]/a/span[2]/a[2]")
-   public WebElement threeDots;
+    @FindBy(xpath = "//*[@id='fileList']/tr[7]/td[2]/a/span[2]/a[2]")
+    public WebElement threeDots;
 
-   @FindBy(xpath = "//a[@class='menuitem action action-delete permanent']")
-   public WebElement deletePermanentlyButton;
+    @FindBy(xpath = "//a[@class='menuitem action action-delete permanent']")
+    public WebElement deletePermanentlyButton;
+
+    @FindBy(xpath = "//a[@data-action='Restore']")
+    public WebElement restoreButton;
+
+    public static String restoredFileName;
+
+
 }

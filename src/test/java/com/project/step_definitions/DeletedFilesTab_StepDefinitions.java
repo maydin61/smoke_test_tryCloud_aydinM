@@ -2,10 +2,12 @@ package com.project.step_definitions;
 
 import com.project.pages.DeletedFilesTabPage;
 import com.project.utilites.BrowserUtils;
+import com.project.utilites.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 
 public class DeletedFilesTab_StepDefinitions {
     DeletedFilesTabPage deletedFilesTabPage = new DeletedFilesTabPage();
@@ -61,5 +63,21 @@ public class DeletedFilesTab_StepDefinitions {
     @Then("user should be able to click on -Delete permanently- button")
     public void userShouldBeAbleToClickOnDeletePermanentlyButton() {
         deletedFilesTabPage.deletePermanentlyButton.click();
+    }
+
+    @Then("user selects a file")
+    public void userSelectsAFile() {
+        DeletedFilesTabPage.restoredFileName=deletedFilesTabPage.firstFile.getAttribute("data-original-title");
+    }
+
+    @And("user clicks on -Restore- button")
+    public void userClicksOnRestoreButton() {
+        deletedFilesTabPage.restoreButton.click();
+    }
+
+    @Then("user should be able to see the file under -All Files- tab")
+    public void userShouldBeAbleToSeeTheFileUnderAllFilesTab() {
+        deletedFilesTabPage.filesButton.click();
+        Driver.getDriver().findElement(By.xpath("//span[.='"+DeletedFilesTabPage.restoredFileName+"']")).isDisplayed();
     }
 }
