@@ -7,6 +7,11 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class CustomiseStepDefinitions {
 
@@ -30,7 +35,7 @@ CustomisePage customisePage = new CustomisePage();
     @Then("user should be able to see the widgets selected")
     public void userShouldBeAbleToSeeTheWidgetsSelected() {
         customisePage.statusButton.isSelected();
-        Assert.assertTrue(  customisePage.statusButton.isSelected());
+        Assert.assertTrue(customisePage.statusButton.isSelected());
 
 
     }
@@ -64,7 +69,28 @@ CustomisePage customisePage = new CustomisePage();
         customisePage.recentCheck.isSelected();
     }
 
-       }
+    @And("user sees the background images")
+    public void userSeesTheBackgroundImages() throws InterruptedException {
+        String actualTitle = customisePage.backgroundImages.getText();
+        String expectedTitle = "Change background image";
+        Thread.sleep(3000);
+        JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
+        Thread.sleep(3000);
+        jse.executeScript("window.scrollBy(0,5000)");
+        Assert.assertEquals(expectedTitle, actualTitle);
+
+    }
+
+    @Then("user selects the background images")
+    public void userSelectsTheBackgroundImages() {
+        List<WebElement> backgroundImages = Driver.getDriver().findElements(By.xpath("//button[@class='background has-tooltip']"));
+
+        for (WebElement backgroundImage : backgroundImages) {
+            backgroundImage.click();
+        }
+
+    }
+}
 
 
 

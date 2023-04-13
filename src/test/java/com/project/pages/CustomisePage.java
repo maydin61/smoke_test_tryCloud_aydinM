@@ -9,8 +9,6 @@ public class CustomisePage {
 
     public CustomisePage() {
         PageFactory.initElements(Driver.getDriver(), this);
-
-
     }
 
     @FindBy(xpath = "//a[@class='edit-panels icon-rename']")
@@ -48,4 +46,9 @@ public class CustomisePage {
 
     @FindBy(xpath = "//label[@for='panel-checkbox-user_status']")
     public WebElement recentCheck;
-}
+
+
+
+    @FindBy(xpath = "//h3[.='Change background image']")
+    public WebElement backgroundImages;}
+
