@@ -17,11 +17,11 @@ Background:
       | dashboard  | 123      |
       | files      | wer      |
       | photos     | jj       |
-      | activity   | kk       |
+      | activity   | wer      |
       | talk       | 123      |
       | mail       | talk     |
       | contacts   | fghjk    |
-      | circles    | 11       |
+      | circles    | aa        |
       | calendar   | ii       |
       | deck       | aa       |
 
@@ -55,11 +55,12 @@ Background:
       | calendar   |
       | deck       |
 
-#    Scenario: User can also see the images files under the Photos module when uploaded them
-#      Given user is under the Files module
-#      When user clicks plus button
-#      And user clicks upload a file button
-#      Then user passes the path of the image
+
+    Scenario: User can also see the images files under the Photos module when uploaded them
+      Given user is under the Files module
+      When user checks for the jpg files
+      And user navigates to Photos module
+      Then user should see those jpg files here
 
 
     Scenario Outline: User should be able to easily modify their search query as needed,
