@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FilesPage extends BasePage {
@@ -24,7 +25,7 @@ public class FilesPage extends BasePage {
     @FindBy(xpath = "//span[@class='displayname']")
     public WebElement uploadFileIcon;
 
-    @FindBy(css = "//div[@class='newFileMenu popovermenu bubble menu open menu-left']/ul/li[1]")
+    @FindBy(xpath = "//span[.='Upload file']")
     public WebElement FileUpload;
 
     @FindBy(xpath = "(//span[@class='nametext'])[1]")
@@ -124,4 +125,6 @@ public class FilesPage extends BasePage {
         return count;
     }
 
+    @FindBy(xpath = "//tr[@data-mime='image/jpeg']")
+    public List<WebElement> imagesFromFiles;
 }

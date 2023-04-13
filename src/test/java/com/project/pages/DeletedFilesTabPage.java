@@ -12,6 +12,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DeletedFilesTabPage {
@@ -130,4 +131,29 @@ public class DeletedFilesTabPage {
     }
 
     public static String expectedLatestTime;
+
+    @FindBy(xpath = "//span[@class='nametext extra-data']")
+    public WebElement firstFile;
+
+   public static String orderByAlphabet(){
+       BrowserUtils.waitFor(3);
+       scrollDown();
+       scrollUp();
+       List<WebElement> allFolder = Driver.getDriver().findElements(By.xpath("//span[@class='nametext extra-data']"));
+       List<String> allFolderName = new ArrayList<>();
+       for (WebElement eachElement : allFolder) {
+            allFolderName.add(eachElement.getAttribute("data-original-title"));
+       }
+       Collections.sort(allFolderName);
+       String firstINAlphabet = allFolderName.get(0);
+       return firstINAlphabet;
+   }
+
+   public static String firstINAlphabet;
+
+   @FindBy(xpath = "//*[@id='fileList']/tr[7]/td[2]/a/span[2]/a[2]")
+   public WebElement threeDots;
+
+   @FindBy(xpath = "//a[@class='menuitem action action-delete permanent']")
+   public WebElement deletePermanentlyButton;
 }
