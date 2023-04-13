@@ -162,5 +162,17 @@ public class DeletedFilesTabPage {
 
     public static String restoredFileName;
 
+    //nothing else works to locate this
+    @FindBy(xpath = "//body[1]/div[3]/div[2]/div[14]/table[1]/tbody[1]/tr[1]")
+    public WebElement elementForID;
 
+    public static String IDForXpath;
+
+    public WebElement firstSelectButton;
+
+    @FindBy(xpath = "//div[@id='app-content-trashbin']//a[@class='actions-selected']")
+    public WebElement actionsButton;
+
+    @FindBy(xpath = "//a[@class='menuitem action restore permanent']")
+    public WebElement actionsRestoreButton;
 }

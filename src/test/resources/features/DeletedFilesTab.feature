@@ -37,3 +37,11 @@ Feature:As a user, I should be able to see all deleted files and delete/restore 
     Then user selects a file
     And user clicks on -Restore- button
     Then user should be able to see the file under -All Files- tab
+@
+  Scenario: User can restore a file using the Actions button
+    When user clicks on -Files- button
+    And user clicks on -Deleted files- button
+    Then user selects the first file
+    And user clicks -Actions- button
+    And user clicks on Restore button under Actions
+    Then user should be able to see the file under -All Files- tab

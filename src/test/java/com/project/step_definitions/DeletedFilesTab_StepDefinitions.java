@@ -80,4 +80,23 @@ public class DeletedFilesTab_StepDefinitions {
         deletedFilesTabPage.filesButton.click();
         Driver.getDriver().findElement(By.xpath("//span[.='"+DeletedFilesTabPage.restoredFileName+"']")).isDisplayed();
     }
+
+    @Then("user selects the first file")
+    public void userSelectsTheFirstFile() {
+        DeletedFilesTabPage.restoredFileName=deletedFilesTabPage.firstFile.getAttribute("data-original-title");
+        DeletedFilesTabPage.IDForXpath=deletedFilesTabPage.elementForID.getAttribute("data-id");
+        deletedFilesTabPage.firstSelectButton=Driver.getDriver().findElement(By.xpath("//label[@for='select-trashbin-"+DeletedFilesTabPage.IDForXpath+"']"));
+        deletedFilesTabPage.firstSelectButton.click();
+    }
+
+    @And("user clicks -Actions- button")
+    public void userClicksActionsButton() {
+        deletedFilesTabPage.actionsButton.click();
+    }
+
+
+    @And("user clicks on Restore button under Actions")
+    public void userClicksOnRestoreButtonUnderActions() {
+        deletedFilesTabPage.actionsRestoreButton.click();
+    }
 }
