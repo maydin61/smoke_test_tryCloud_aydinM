@@ -292,6 +292,8 @@ public class ContanctModule_StepDefinition {
         contactsModule.NewContact_Country.sendKeys(faker.country().name());
         Thread.sleep(5000);
 
+        System.out.println("contactsModule.Nc_plusNewProperty4thElementBirthday.getAttribute(\"Birthday\") = " + contactsModule.Nc_plusNewProperty4thElementBirthday.getAttribute("Birthday"));
+
     }
 }
 
