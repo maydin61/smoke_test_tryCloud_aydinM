@@ -6,6 +6,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.util.HashMap;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class Driver {
@@ -39,8 +41,18 @@ public class Driver {
             */
             switch (browserType){
                 case "chrome":
-                    WebDriverManager.chromedriver().setup();
                     ChromeOptions options = new ChromeOptions();
+                    HashMap<String, Integer> contentSettings = new HashMap<String,Integer>();
+                    HashMap<String, Object> profile = new HashMap<String,Object>();
+                    HashMap<String, Object> prefs = new HashMap<String,Object>();
+                    contentSettings.put("notifications",1);
+                    contentSettings.put("geolocation",1);
+                    contentSettings.put("media_stream",1);
+                    profile.put("managed_default_content_settings",contentSettings);
+                    prefs.put("profile",profile);
+                    options.setExperimentalOption("prefs",prefs);
+                    WebDriverManager.chromedriver().setup();
+                    options.addArguments("disable-media-stream");
                     options.addArguments("--lang=en-GB");
                     driverPool.set(new ChromeDriver(options));
                     driverPool.get().manage().window().maximize();
