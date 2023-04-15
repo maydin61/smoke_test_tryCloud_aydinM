@@ -135,7 +135,7 @@ public class DeletedFilesTabPage {
     @FindBy(xpath = "//span[@class='nametext extra-data']")
     public WebElement firstFile;
 
-   public static String orderByAlphabet(){
+    public static String orderByAlphabet(){
        BrowserUtils.waitFor(3);
        scrollDown();
        scrollUp();
@@ -149,11 +149,30 @@ public class DeletedFilesTabPage {
        return firstINAlphabet;
    }
 
-   public static String firstINAlphabet;
+    public static String firstINAlphabet;
 
-   @FindBy(xpath = "//*[@id='fileList']/tr[7]/td[2]/a/span[2]/a[2]")
-   public WebElement threeDots;
+    @FindBy(xpath = "//*[@id='fileList']/tr[7]/td[2]/a/span[2]/a[2]")
+    public WebElement threeDots;
 
-   @FindBy(xpath = "//a[@class='menuitem action action-delete permanent']")
-   public WebElement deletePermanentlyButton;
+    @FindBy(xpath = "//a[@class='menuitem action action-delete permanent']")
+    public WebElement deletePermanentlyButton;
+
+    @FindBy(xpath = "//a[@data-action='Restore']")
+    public WebElement restoreButton;
+
+    public static String restoredFileName;
+
+    //nothing else works to locate this
+    @FindBy(xpath = "//body[1]/div[3]/div[2]/div[14]/table[1]/tbody[1]/tr[1]")
+    public WebElement elementForID;
+
+    public static String IDForXpath;
+
+    public WebElement firstSelectButton;
+
+    @FindBy(xpath = "//div[@id='app-content-trashbin']//a[@class='actions-selected']")
+    public WebElement actionsButton;
+
+    @FindBy(xpath = "//a[@class='menuitem action restore permanent']")
+    public WebElement actionsRestoreButton;
 }

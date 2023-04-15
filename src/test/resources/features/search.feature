@@ -74,8 +74,8 @@ Background:
         | search query1 | search query2 |
         | Akos          | Nati          |
         | talk          | readme        |
-        | Huseyin       |               |
+        | Huseyin       | Akos          |
         | 123           | wer           |
         | ii            | Dursun        |
-        | 11            |               |
+        | 11            | Nati          |
 
