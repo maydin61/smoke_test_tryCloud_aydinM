@@ -37,11 +37,6 @@ public class US0012_FilePage extends BasePage {
     @FindBy(xpath = "//input[contains(@class, \"submit\")]")
     public WebElement commentSubmit;
 
-
-
-    
-    
-
     @FindBy(xpath = "//span[@class='nametext']")
     public List<WebElement> ListOfFiles;
 
@@ -49,10 +44,11 @@ public class US0012_FilePage extends BasePage {
     public WebElement commentMessage;
 
 
+    @FindBy(xpath = "//a[@class=\"action more icon icon-more has-tooltip\"]")
+    public WebElement commentThreeDot;
 
-
-
-
+    @FindBy(xpath = "/html/body/div[3]/aside/div/div/section[3]/div/ul/li/div[1]/div[5]/ul/li[2]/a/span[2]")
+    public WebElement deleteComment;
 
 
     public int getFileIndex(String file){

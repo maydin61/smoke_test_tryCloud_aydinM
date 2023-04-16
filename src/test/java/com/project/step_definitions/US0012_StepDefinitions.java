@@ -119,7 +119,17 @@ public class US0012_StepDefinitions {
     }
 
 
+    @And("user clicks three dots on comment")
+    public void userClicksThreeDotsOnComment() {
+        BrowserUtils.waitFor(2);
+        filePage.commentThreeDot.click();
 
+    }
 
+    @And("user deletes comment")
+    public void userDeletesComment() {
+        BrowserUtils.waitFor(2);
+        filePage.deleteComment.click();
 
+    }
 }

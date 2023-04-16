@@ -33,5 +33,5 @@ Feature: As a user, I should be able to add a file to favorites,
     And user clicks Details icon
     And user clicks on comments section
     And user clicks three dots on comment
-    And user clicks delete comment button
-    Then user sees comment is deleted
+    And user deletes comment
+
