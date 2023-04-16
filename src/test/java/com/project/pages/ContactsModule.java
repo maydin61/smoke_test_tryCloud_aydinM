@@ -103,6 +103,7 @@ public class ContactsModule {
     public WebElement Nc_group3DotsButton;
 
 //(//button[@aria-haspopup='true'])[4]
+
     @FindBy(xpath = "(//span[@class='action-button__text'])[5]")
     public WebElement Nc_plusSingAddContacts_group;
 

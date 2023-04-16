@@ -29,7 +29,6 @@ public class ContanctModule_StepDefinition {
         String expectedUrl = "https://qa.trycloud.net/index.php/apps/contacts/All%20contacts";
         String actualURL = Driver.getDriver().getCurrentUrl();
         Assert.assertTrue(Driver.getDriver().getCurrentUrl().endsWith("contacts"));
-
     }
 
     @Then("user should able to click to -New group- text or -plus sing- to creat a New group")
@@ -113,7 +112,6 @@ public class ContanctModule_StepDefinition {
         String actualText = contactsModule.Nc_plusNewProperty4thElementBirthday.getText();
         Assert.assertEquals(expectedText, actualText);
 
-
     }
 
     @Then("The user should able to click - + Add contacts-")
@@ -142,7 +140,6 @@ public class ContanctModule_StepDefinition {
         Assert.assertTrue( contactsModule.Nc_plusSingAddContacts_group.isDisplayed());
         contactsModule.Nc_plusSingAddContacts_group.click();
         Assert.assertTrue( contactsModule.Nc_SearchContacts2Selection.isEnabled());
-
 
     }
 
@@ -180,7 +177,6 @@ public class ContanctModule_StepDefinition {
 
         //contactsModule.Nc_CreatANewGroupArrowIcon.click();
         contactsModule.Nc_Group_EU10_3dots_2ndInGroup_List.click();
-
     }
 
     @And("the user can click all contacts button")
@@ -204,7 +200,6 @@ public class ContanctModule_StepDefinition {
 
        Assert.assertTrue(contactsModule.Nc_Group_Group_EU10.isDisplayed());
        Assert.assertTrue(contactsModule.Nc_Group_Group_28.isDisplayed());
-
 
     }
 // New Contact addition
