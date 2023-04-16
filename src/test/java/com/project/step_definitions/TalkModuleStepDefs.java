@@ -9,13 +9,13 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class TalkModuleStepDefs {
     TalkModulePage talkModulePage = new TalkModulePage();
@@ -49,32 +49,27 @@ public class TalkModuleStepDefs {
         talkModulePage.alreadyCreatedConversation.click();
     }
 
-    @And("user writes any participant {string}")
-    public void userWritesAnyParticipant(String participantName) {
-        talkModulePage.addParticipantInput.sendKeys(participantName);
+    @And("user writes any participant name")
+    public void userWritesAnyParticipant() {
+        talkModulePage.addParticipantInput.sendKeys("Employee33");
     }
 
 
 
-    @And("user adds that {string}")
-    public void userAddsThat(String participant) {
+    @And("user adds that participant")
+    public void userAddsThat() {
         for (WebElement searchedParticipant : talkModulePage.searchedParticipants) {
-
-            if (searchedParticipant.getText().equals(participant)) {
-                searchedParticipant.click();
-            }
+            searchedParticipant.click();
         }
     }
 
-    @Then("user should be able to see that {string} after adding")
-    public void userShouldBeAbleToSeeThat(String addedParticipantName) {
+    @Then("user should be able to see that participant name after adding")
+    public void userShouldBeAbleToSeeThat() {
+        ArrayList<String> employeeNames = new ArrayList<>();
         for (WebElement participantName : talkModulePage.addedParticipants) {
-//            BrowserUtils.sleep(2);
-//            ArrayList<String> names = new ArrayList<String>();
-//            names.add(participantName.getText());
-//
-//            System.out.println(names);
+            employeeNames.add(participantName.getText());
         }
+        Assert.assertTrue(employeeNames.contains("Employee33"));
     }
 
     @And("user writes the {string} of conversations")
@@ -89,11 +84,10 @@ public class TalkModuleStepDefs {
         ArrayList<String> names = new ArrayList<>();
         for (WebElement createdConversation : talkModulePage.createdConversations) {
             names.add(createdConversation.getText());
-            if (createdConversation.getText().equals(conversationList)){
-                System.out.println(conversationList);
-                System.out.println(createdConversation.getText());
-            }
         }
+        System.out.println(names);
+        BrowserUtils.sleep(4);
+        Assert.assertTrue(names.contains(conversationList));
 
     }
 
@@ -101,9 +95,6 @@ public class TalkModuleStepDefs {
     public void userClicksStartCallButton() {
         BrowserUtils.sleep(5);
         talkModulePage.startCallButton.click();
-        BrowserUtils.sleep(5);
-        Driver.getDriver().switchTo().alert().accept();
-//        alert.accept();
     }
 
     @Then("user should see started call text")
@@ -139,10 +130,6 @@ public class TalkModuleStepDefs {
         talkModulePage.yesButton.click();
     }
 
-    @Then("this conversation should be deleted")
-    public void thisConversationShouldBeDeleted() {
-//        System.out.println("deleted");
-    }
 
     @And("user writes any message")
     public void userWritesAnyMessage() {
@@ -157,6 +144,8 @@ public class TalkModuleStepDefs {
 
     @Then("user should see that message in chat")
     public void userShouldSeeThatMessageInChat() {
-        Assert.assertTrue(talkModulePage.messageInChat.isDisplayed());
+        System.out.println(talkModulePage.messageInChat.getText());
+        Assert.assertTrue(talkModulePage.messageInChat.getText().equals("Hello, how is going?"));
+
     }
 }

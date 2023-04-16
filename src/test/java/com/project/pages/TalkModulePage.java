@@ -43,7 +43,6 @@ public class TalkModulePage {
 
     @FindBy(xpath = "//div[.='You created the conversation']")
     public WebElement youCreatedConversationText;
-     String employeeName;
 
     @FindBy(xpath = "//div[text()='You added ']//h6")
     public List<WebElement> addedParticipants;
@@ -93,7 +92,7 @@ public class TalkModulePage {
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement sendMessageButton;
 
-    @FindBy(xpath = "//div[@class='rich-text--wrapper']")
+    @FindBy(xpath = "//div[@class='message']//div[@class='message__main']/div/div")
     public WebElement messageInChat;
 
 
