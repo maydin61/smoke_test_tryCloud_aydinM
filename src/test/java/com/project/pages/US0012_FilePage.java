@@ -16,11 +16,10 @@ public class US0012_FilePage extends BasePage {
     @FindBy(xpath = "//a [@class='nav-icon-favorites svg']")
     public WebElement favorites;
 
+    @FindBy(xpath = "(//span [@class='innernametext'])[4]")
+    public WebElement File1Fav;
 
-    @FindBy(xpath = "(//span[@class='innernametext'])[13]")
-    public WebElement file1;
-
-    @FindBy(xpath = "(//span[@class='innernametext'])[21]")
+    @FindBy(xpath = "//*[text() = 'RenameFile']")
     public WebElement renameFile;
 
     @FindBy(xpath = "//span[text()='Details']")
@@ -39,8 +38,7 @@ public class US0012_FilePage extends BasePage {
     public WebElement commentSubmit;
 
 
-    @FindBy(xpath = "//a[@class=\"action more icon icon-more has-tooltip\"]")
-    public WebElement commentThreeDot;
+
     
     
 
@@ -50,11 +48,10 @@ public class US0012_FilePage extends BasePage {
     @FindBy(xpath = "/html/body/div[3]/aside/div/div/section[3]/div/ul/li[1]/div[2]")
     public WebElement commentMessage;
 
-    @FindBy(xpath = "/html/body/div[3]/aside/div/div/section[3]/div/ul/li/div[1]/div[5]/ul/li[2]/a/span[2]")
-    public WebElement deleteComment;
 
-    @FindBy(xpath = "(//div[@class='emptycontent'])[2]")
-    public WebElement noComment;
+
+
+
 
 
 
@@ -82,6 +79,7 @@ public class US0012_FilePage extends BasePage {
 
         String threeDotLocator = "((//span[@class='nametext'])["+index+"]/..//span)[9]";
         WebElement threeDot = Driver.getDriver().findElement(By.xpath(threeDotLocator));
+
         return threeDot;
     }
 
