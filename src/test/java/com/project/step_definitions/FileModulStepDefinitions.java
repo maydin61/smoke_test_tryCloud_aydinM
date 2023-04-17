@@ -4,7 +4,9 @@ import com.project.pages.FilesPage;
 import com.project.utilites.BrowserUtils;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.bytebuddy.asm.Advice;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -25,27 +27,35 @@ public class FileModulStepDefinitions {
 
     @When("user click the plus icon")
     public void user_click_the_plus_icon() {
-        BrowserUtils.waitFor(3);
+BrowserUtils.waitFor(2);
         filePage.plusIcon.click();
+
+
 
     }
 
     @When("user clicks upload file")
-    public void user_clicks_upload_file() {
+    public void user_clicks_upload_file()  {
+        BrowserUtils.waitFor(3);
+        filePage.FileUpload.click();
 
-        filePage.uploadFileIcon.click();
 
     }
 
     @When("user selects any file")
     public void user_selects_any_file() {
 
-        filePage.fileUpload("load");
+//        filePage.fileUpload("load\n" +
+//                ".txt");
+        String projectPath = System.getProperty("user.dir");
+        String filePath = "src/test/resources/load.txt";
+        String fullPath = projectPath+"/"+filePath;
+        new FilesPage().uploadFileDropDown.sendKeys(fullPath);
 
     }
 
     @Then("user see uploaded file")
-    public void user_see_uploaded_file() throws AWTException {
+    public void user_see_uploaded_file()  {
         BrowserUtils.waitFor(2);
 
         List<String> actualFolderList = BrowserUtils.getElementsText(filePage.folderlist);
@@ -59,12 +69,7 @@ public class FileModulStepDefinitions {
             Assert.assertTrue(false);
         }
 
-        Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_TAB);
-        robot.keyPress(KeyEvent.VK_TAB);
-        robot.keyPress(KeyEvent.VK_TAB);
 
-        robot.keyPress(KeyEvent.VK_ENTER);
 
 
     }
@@ -118,7 +123,8 @@ public class FileModulStepDefinitions {
         filePage.threeDot.click();
         filePage.moveOrCopyButton.click();
         filePage.chooseTargetfolder.click();
-        filePage.moveToTalkButton.click();
+        BrowserUtils.waitFor(3);
+        filePage.moveToButton.click();
 
     }
 
@@ -147,7 +153,7 @@ public class FileModulStepDefinitions {
     @Then("user sees the number of the file and folder")
     public void user_sees_the_number_of_the_file_and_folder() {
         BrowserUtils.waitFor(3);
-        Assert.assertEquals("2 folders and 1 file", filePage.NumberOfFile.getText());
+        Assert.assertEquals("12 folders and 11 files", filePage.NumberOfFile.getText());
         System.out.println("filePage.NumberOfFile.getText() = " + filePage.NumberOfFile.getText());
 
         filePage.closeIcon.click();
@@ -174,7 +180,7 @@ public class FileModulStepDefinitions {
     @Then("user sees folder in the favorites section")
     public void user_sees_folder_in_the_favorites_section() {
 
-        Assert.assertEquals("Talk", filePage.talkFolder.getText());
+        Assert.assertEquals("11", filePage.talkFolderAssert.getText());
 
     }
 

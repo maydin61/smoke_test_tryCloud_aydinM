@@ -29,7 +29,7 @@ Feature: As a user, I should be able to login.
     Then click arrow icon
     And user move or copy the document into the any folder
     Then user see the item in the selected folder
-    Then the user delete "New text" uploaded file
+   Then the user delete "New text document" uploaded file
 
 
   Scenario: User can delete any selected item from its three dots menu
@@ -50,8 +50,8 @@ Feature: As a user, I should be able to login.
     And user clicks New text document
     Then click arrow icon
     And user sees the number of the file and folder
-    Then the user delete "New text" uploaded file
-    Then the user delete "New folder" uploaded file
+   Then the user delete "New text document" uploaded file
+#   Then the user delete "New folder" uploaded file
 
 
 

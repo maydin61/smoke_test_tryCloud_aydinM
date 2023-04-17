@@ -11,6 +11,7 @@ import java.util.List;
 
 public class FilesPage extends BasePage {
 
+
     @FindBy(className = "app-sidebar-tabs__content")
     public WebElement sideBar;
 
@@ -22,7 +23,7 @@ public class FilesPage extends BasePage {
 
     public WebElement plusIcon;
 
-    @FindBy(xpath = "//span[@class='displayname']")
+    @FindBy(xpath = "(//span[@class='displayname'])[1]")
     public WebElement uploadFileIcon;
 
     @FindBy(xpath = "//span[.='Upload file']")
@@ -31,7 +32,7 @@ public class FilesPage extends BasePage {
     @FindBy(xpath = "(//span[@class='nametext'])[1]")
     public WebElement actualUploadedFile;
 
-    @FindBy(xpath = "(//span[@class='icon icon-more'])[3]")
+    @FindBy(xpath = "(//span[@class='icon icon-more'])[21]")
     public WebElement threeDot;
 
     @FindBy(xpath = "(//span[@class='icon icon-more'])[2]")
@@ -50,7 +51,7 @@ public class FilesPage extends BasePage {
     @FindBy(xpath = "//span[@class='innernametext']")
     public WebElement newFolderLocate;
 
-    @FindBy(xpath = "(//span[text()='New text document'])[1]")
+    @FindBy(xpath = "(//span[text()='New text document'])")
     public WebElement newTextDocument1;
 
     @FindBy(xpath = "(//span[text()='New text document'])[2]")
@@ -62,8 +63,8 @@ public class FilesPage extends BasePage {
     @FindBy(xpath = "//td[@class='filename']")
     public WebElement chooseTargetfolder;
 
-    @FindBy(xpath = "//button[text()='Move to Talk']")
-    public WebElement moveToTalkButton;
+    @FindBy(xpath = "//button[text()='Move to 11']")
+    public WebElement moveToButton;
 
     @FindBy(xpath = "//button[@class='action-item action-item--single header-close icon-close undefined undefined has-tooltip']")
     public WebElement closeIcon;
@@ -83,20 +84,32 @@ public class FilesPage extends BasePage {
     @FindBy(xpath = "//a [@class='nav-icon-favorites svg']")
     public WebElement favoritesMenu;
 
-    @FindBy(xpath = "(//span[@class='innernametext'])[2]")
+    @FindBy(xpath = "//span[text()='11']")
     public WebElement talkFolder;
+
+    @FindBy(xpath = "(//span[text()='11'])[2]")
+    public WebElement talkFolderAssert;
+
 
     @FindBy(xpath = "//span[@class='nametext']")
     public List<WebElement> folderlist;
 
+    @FindBy(css="input[type=load]")
+    public WebElement fileUpload;
 
-    public void fileUpload(String fileName) {
+    @FindBy(xpath = "//input[@id='file_upload_start']")
+    public  WebElement uploadFileDropDown;
+
+
+    public void fileUpload (String fileName) {
         //String desktopFilePath = "C://Users//Administrator//Desktop//"+fileName+".txt";
 
+
         String projectPath = System.getProperty("user.dir");
-        String filePath = "src/test/resources/" + fileName + ".txt";
+        String filePath = "src/test/resources/" + fileName;
         String projectFilePath = projectPath + "/" + filePath;
-        FileUpload.sendKeys(projectFilePath);
+
+        uploadFileDropDown.sendKeys(projectFilePath);
 
     }
 
