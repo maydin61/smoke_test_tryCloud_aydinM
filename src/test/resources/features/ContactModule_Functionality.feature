@@ -39,7 +39,7 @@ Feature: As a user, I should be able to create a new group and
 
   @TCLOUD10-517
   Scenario: AC03- User can see all the available groups name through the groups dropdown menu existing
-                  in the contact’s own info menu
+                   in the contact’s own info menu
 
     When the user clicks to plus button
     Then the user can see "Creat a new group" text in the box

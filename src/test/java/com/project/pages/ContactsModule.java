@@ -10,6 +10,7 @@ public class ContactsModule {
 
     public ContactsModule() {
         PageFactory.initElements(Driver.getDriver(), this);
+
     }
 
     @FindBy(xpath = "/html/body/header/div[1]/ul/li[7]/a")
