@@ -81,3 +81,11 @@ Feature: As a user, I should be able to login.
 
   Scenario: User can see valid placeholders on Username and Password fields
     Then user can see valid placeholders
+
+  @TCLOUD10-504
+  Scenario: User should be able to login with valid credentials
+    Given user is on the login page
+    When user enters valid username
+    And user enters valid password
+    And user clicks on Login button
+    Then user should see "Dashboard - Trycloud QA" in the title
