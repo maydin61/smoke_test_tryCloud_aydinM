@@ -78,6 +78,7 @@ public class DeletedFilesTab_StepDefinitions {
     @Then("user should be able to see the file under -All Files- tab")
     public void userShouldBeAbleToSeeTheFileUnderAllFilesTab() {
         deletedFilesTabPage.filesButton.click();
+        DeletedFilesTabPage.scrollDown();
         Driver.getDriver().findElement(By.xpath("//span[.='"+DeletedFilesTabPage.restoredFileName+"']")).isDisplayed();
     }
 
